@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects</title>
 
     <style>
@@ -36,6 +36,16 @@
         color:#E4DCCF;
         text-decoration: underline;
       }
+      small{
+        display:none;
+        padding: 0 20px;
+      }
+      .tinDogDescription:hover + small{
+        display:inline-block;
+      }
+      .tributeDescription:hover + small{
+        display:inline-block;
+      }
       
     </style>
 
@@ -46,9 +56,10 @@
       <h1>My Projects</h1>
       <ol>
         <li> <a href="HTML & CSS Projects\Survey\survey.html">Basic Survey</a></li>
-        <li> <a href="HTML & CSS Projects\A Tribute Page\tributePage.html">A Tribute Page</a></li>
-        <li> <a href="HTML & CSS Projects\TinDog-Start-master\tindog.html">Tindog<small>(A website of a startup project made with the help of Bootstrap5)</small></a></li>
-        
+        <li> <a href="HTML & CSS Projects\A Tribute Page\tributePage.html" class="tributeDescription">A Tribute Page</a><small>(A tribute page of Mustafa Kemal ATATÜRK)</small></li>
+        <li > <a href="HTML & CSS Projects\TinDog-Start-master\tindog.html" class="tinDogDescription">Tindog</a><small>(A website of a startup project made with the help of Bootstrap5)</small></li>
+        <li>  <a href="HTML & CSS Projects/Dicee Game/dicee.html">Simple Dicee Game</a></li>
+        <li></li>
       </ol>
   </div>
   </body>
