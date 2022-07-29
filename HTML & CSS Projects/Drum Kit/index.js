@@ -8,12 +8,19 @@ for(var i = 0;i < drums.length;i++)
     var buttonInner = this.innerHTML;
 
     makeSound(buttonInner);
+
+    buttonAnimation(buttonInner);
+
   });
 }
 
 // Detecting keyboard press
 document.addEventListener("keydown",function(event){  //anonymous function
+
   makeSound(event.key);
+
+  buttonAnimation(event.key);
+
 });
 
 function makeSound(key){
@@ -57,4 +64,15 @@ function makeSound(key){
     default:
 
   }
+}
+
+function buttonAnimation(currentKey){
+
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+
+  setTimeout(function(){
+    activeButton.classList.remove("pressed");
+  },100)
+
 }

@@ -20,6 +20,15 @@ a{
     text-decoration: none;
 }
 
+a:hover{
+  color: #DA0463;
+  font-size:1.2rem;
+}
+
+#title:hover{
+  color: #DA0463;
+}
+
 .a {
   background-image: url("images/tom1.png");
 }
