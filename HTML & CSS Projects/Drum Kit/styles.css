@@ -45,12 +45,16 @@ a:hover{
   background-image:url("images/tom4.png");
 }
 
-.j {
+.h {
   background-image:url("images/snare.png");
 }
 
-.k {
+.j {
   background-image:url("images/crash.png");
+}
+
+.k {
+  background-image: url("images/hi\ hat.jpg");
 }
 
 .l {

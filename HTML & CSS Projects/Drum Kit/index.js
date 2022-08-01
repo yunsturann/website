@@ -46,18 +46,23 @@ function makeSound(key){
       tom4.play();
       break;
 
-    case "j":
+    case "h":
       var snare = new Audio("sounds/snare.mp3");
       snare.play();
       break;
 
-    case "k":
+    case "j":
       var crash = new Audio("sounds/crash.mp3");
       crash.play();
       break;
+    
+    case "k":
+      var hiHat = new Audio("sounds/hiHat.mp3");
+      hiHat.play();
+      break;
 
     case "l":
-      var kickBass = new Audio("sounds/kick-bass.mp3");
+      var kickBass = new Audio("sounds/kickDrum.mp3");
       kickBass.play();
       break;
 
