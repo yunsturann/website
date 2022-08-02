@@ -6,61 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects</title>
 
-    <style>
-      body{
-        background-color: #F0EBE3;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        color:#2C3333;
-      }
-      .container{
-        background-color: #7D9D9C;
-        min-height:500px;
-        width:50%;
-        margin:20px auto;
-        padding:10px;
-      }
-      h1{
-        text-align: center;
-        color:#181D31;
-        margin-bottom:40px;
-      }
-      li{
-        line-height:2.5;
-      }
-      a{
-        text-decoration:none;
-        color:#2C3333;
-        font-weight: bold;
-      }
-      a:hover{
-        color:#E4DCCF;
-        text-decoration: underline;
-      }
-      small{
-        display:none;
-        padding: 0 20px;
-      }
-      .tinDogDescription:hover + small{
-        display:inline-block;
-      }
-      .tributeDescription:hover + small{
-        display:inline-block;
-      }
-      
-    </style>
-
+    <link rel="stylesheet" href="css folder/myProjects.css">
   </head>
 
   <body>
+
+    <nav>
+      <a href="index.html">Homepage</a>
+      <a href="https://www.instagram.com/yunsturann/">Instagram</a>
+      <a href="https://github.com/yunsturann">Github</a>
+    </nav>
+
     <div class="container">
       <h1>My Projects</h1>
+
+
       <ol>
-        <li> <a href="HTML & CSS Projects\Survey\survey.html">Basic Survey</a></li>
-        <li> <a href="HTML & CSS Projects\A Tribute Page\tributePage.html" class="tributeDescription">A Tribute Page</a><small>(A tribute page of Mustafa Kemal ATATÜRK)</small></li>
-        <li > <a href="HTML & CSS Projects\TinDog-Start-master\tindog.html" class="tinDogDescription">Tindog</a><small>(A website of a startup project made with the help of Bootstrap5)</small></li>
-        <li>  <a href="HTML & CSS Projects/Dicee Game/dicee.html">Simple Dicee Game</a></li>
-        <li> <a href="HTML & CSS Projects/Drum Kit/index.html">Drum Kit</a></li>
+
+        <li> <a href="HTML & CSS Projects\Survey\survey.html" class="previewHover">Basic Survey</a>
+          <div class="preview">
+            <h3>Preview</h3>
+            <h4>A simple survey</h3>
+            <img class="previewImg"src="myProjectsImages/surveyPreview.png" alt="preview of survey">
+          </div>
+        </li>
+
+        <li> <a href="HTML & CSS Projects\A Tribute Page\tributePage.html" class="previewHover">A Tribute Page</a>
+          <div class="preview">
+            <h3>Preview</h3>
+            <h4>A tribute page of Mustafa Kemal ATATÜRK</h3>
+            <img class="previewImg"src="myProjectsImages/tributePagePreview.png" alt="preview of tribute page">
+          </div>
+        </li>
+
+        <li> <a href="HTML & CSS Projects\TinDog-Start-master\tindog.html" class="previewHover">Tindog</a>
+          <div class="preview">
+            <h3>Preview</h3>
+            <h4>A website of a startup project made with the help of Bootstrap5</h3>
+            <img class="previewImg"src="myProjectsImages/tindogPreview.png" alt="preview of tindog">
+          </div>
+        </li>
+
+        <li>  <a href="HTML & CSS Projects/Dicee Game/dicee.html" class="previewHover">Simple Dicee Game</a>
+          <div class="preview">
+            <h3>Preview</h3>
+            <h4>Simple dice game which can be played by refreshing page.</h3>
+            <img class="previewImg"src="myProjectsImages/dicePreview.png" alt="preview of dice game">
+          </div>
+        </li>
+
+        <li> <a href="HTML & CSS Projects/Drum Kit/index.html" class="previewHover">Drum Kit</a>
+          <div class="preview">
+            <h3>Preview</h3>
+            <h4>Drum Kit</h3>
+            <img class="previewImg"src="myProjectsImages/drumkitPreview.png" alt="preview of drum kit">
+          </div>
+        </li>
+
       </ol>
+
+      
   </div>
   </body>
 
