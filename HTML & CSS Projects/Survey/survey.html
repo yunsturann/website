@@ -7,65 +7,18 @@
         <meta name="viewport" content=
             "width=device-width, initial-scale=1.0">
         <title>Survey Project</title>
-
-        <style>
-            *{
-                margin:0;
-                padding:0;
-                color:#40514E;
-                font-family:Arial, Helvetica, sans-serif;
-                line-height:2;
-            }
-            body{
-                background-color: antiquewhite;
-            }
-            #container{
-                background-color: #A5C9CA;
-                min-height:600px;
-                width:500px;
-                margin:40px auto;
-                padding:20px;
-            }
-            .firstTitle{
-                color:#2C3333;
-                text-align: center;
-                padding:15px;
-            }
-            label{
-                font-size:16px;
-                font-weight: 480;
-            }
-            .smallWeight{
-                font-size:14px;
-                font-weight: 400;
-                color:rgb(46, 109, 109);
-            }
-            .expand{
-                width:400px;
-                border-color:#E7F6F2;
-                background-color:#E7F6F2;
-                outline: none;
-                
-                text-indent:3px;
-            }
-            .button{
-                min-width:150px;
-                height:30px;
-                background-color:rgb(180, 207, 217);
-                border-style:dotted;
-            }
-            .button:hover{
-                background-color: rgb(100, 122, 130);
-                color:#2C3333;
-                text-decoration: underline;
-                font-weight: bolder;
-            }
-            
-        
-        </style>
+        <link rel="stylesheet" href="survey.css">
     </head>
 
     <body>
+
+        <div class="sidebar">
+
+            <a href="">Homepage</a>
+            <a href="">Projects</a>
+
+        </div>
+
         <div id="container">
             <h1 class="firstTitle">My Survey</h1>
 
@@ -82,6 +35,7 @@
                 <br>
                 <input class="expand" type="number" name="age" placeholder="Enter age">
                 <br>
+
                 <label for="describe">Which option best describes you?</label>
                 <br>
                 <select class="expand" name="describe" id="comboBox">
@@ -92,40 +46,54 @@
                     <option value="ceo">Ceo</option>
                     <option value="other">Other</option>
                 </select>
+
                 <br>
 
-                <label for="radioQues" tBMargin>Would you recommend your university to your friend?</label>
-                <br>
-                <input type="radio" name="radioQues" value="yes">
-                <label for="radioQues" class="smallWeight">Yes I recommend</label>
-                <br>
-                <input type="radio" name="radioQues" value="no">
-                <label for="radioQues" class="smallWeight">No I don't</label>
-                <br>
-                <input type="radio" name="radioQues" value="maybe">
-                <label for="radioQues" class="smallWeight">Maybe</label>
+                <label for="radioQues" >Gender</label>
                 <br>
 
-                <label for="checkBox" class="tBMargin">Languages and Frameworks known<span class="smallWeight">(check all that apply) </span></label>
+                <label >
+                    <input type="radio" name="radioQues" value="female">
+                    <span class="smallWeight">Female</span>
+                </label>
+                
                 <br>
-                <input type="checkbox" name="c" value="c"><label for="c" class="smallWeight">C</label><br>
-                <input type="checkbox" name="c++" value="c++"><label for="c++" class="smallWeight">C++</label><br>
-                <input type="checkbox" name="c#" value="c#"><label for="c#" class="smallWeight">C#</label><br>
-                <input type="checkbox" name="java" value="java"><label for="java" class="smallWeight">Java</label><br>
-                <input type="checkbox" name="python" value="python"><label for="python" class="smallWeight">Python</label><br>
-                <input type="checkbox" name="react" value="react"><label for="react" class="smallWeight">React</label><br>
-                <input type="checkbox" name="angular" value="angular"><label for="angular" class="smallWeight">Angular</label><br>
+
+                <label>
+                    <input type="radio" name="radioQues" value="male" >
+                    <span class="smallWeight">Male</span>
+                </label>
+                
+                <br>
+
+                <label >
+                    <input type="radio" name="radioQues" value="other">
+                    <span class="smallWeight">Other</span>
+                </label>
+                <br>
+
+                <label for="checkBox" >Languages and Frameworks known<span class="smallWeight">(check all that apply) </span></label>
+                <br>
+                <input type="checkbox" name="c" value="c" id="c"><label for="c" class="smallWeight">C</label><br>
+                <input type="checkbox" name="c++" value="c++" id="c++"><label for="c++" class="smallWeight">C++</label><br>
+                <input type="checkbox" name="c#" value="c#" id="c#"><label for="c#" class="smallWeight">C#</label><br>
+                <input type="checkbox" name="java" value="java" id="java"><label for="java" class="smallWeight">Java</label><br>
+                <input type="checkbox" name="python" value="python" id="python"><label for="python" class="smallWeight">Python</label><br>
+                <input type="checkbox" name="react" value="react" id="react"><label for="react" class="smallWeight">React</label><br>
+                <input type="checkbox" name="angular" value="angular" id="angular"><label for="angular" class="smallWeight">Angular</label><br>
                 
                 <label for="textArea">Any comments or suggestions</label><br>
-                <textarea class="expand" name="textArea" id="" cols="30" rows="4"></textarea>
+                <textarea class="expand" name="textArea" id="" cols="30" rows="6"></textarea>
                 <br>
-                <input class="button"type="submit" value="Submit the Survey" >
 
-            </form>
+                <div class="buttons">
+                    <input class="button" type="submit" value="Submit the Survey" >
+                    <input class="button" type="reset" value="Reset the Form">
+                </div>
+        
+              </form>
         </div>
 
-
     </body>
-
 
 </html>
