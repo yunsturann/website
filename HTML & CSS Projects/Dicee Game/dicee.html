@@ -3,27 +3,62 @@
   <head>
     <meta charset="utf-8">
     <title>Dicee</title>
+
+    <!--Font awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous"/>
+    <!--my css file-->
     <link rel="stylesheet" href="styles.css">
+     <!--Embeded Font Family-->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
 
   </head>
   <body>
-
+    
     <div class="container">
-      <h1>Refresh Me</h1>
-      <h4>Refresh Page to play!</h4>
-      <div class="dice">
-        <p>Player 1</p>
-        <img class="img1" src="images/dice6.png">
+
+      <h1 id="title">Let's Play!!!</h1>
+
+      <div class="contact scoreboard">
+
+        <a href="https://www.instagram.com/yunsturann/" > <i class="fa-brands fa-instagram fa-lg"></i> </a>
+        <a href="#" title="I don't use twitter for my health"> <i class="fa-brands fa-twitter fa-lg"></i> </a>
+        <a href="https://github.com/yunsturann"> <i class="fa-brands fa-github fa-lg"></i> </a>
+        <a href="mailto:eynstrne@gmail.com" target="_blank"> <i class="fa-solid fa-envelope fa-lg" title="mail me"></i> </a>
+        <a href="https://yunsturann.github.io/website/" > <i class="fa-solid fa-y fa-lg" title="my website"></i> </a>
       </div>
 
-      <div class="dice">
-        <p>Player 2</p>
-        <img class="img2" src="images/dice6.png">
+      <div class="dices">
+        <div class="dice">
+          <p>Player 1</p>
+          <img class="img1" src="images/dice6.png">
+        </div>
+  
+        <div class="dice">
+          <p>Player 2</p>
+          <img class="img2" src="images/dice6.png">
+        </div>
+      </div>
+      
+      <div class="scoreboard">
+
+        <div class="player1">
+          <p>Player1 SCORE</p>
+          <p class="score score1">0</p>
+        </div>
+
+        <div class="player2">
+          <p>Player2 SCORE</p>
+          <p class="score score2">0</p>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="button" type="button" onClick="play()">Play</button>
+        <button class="button" type="button" onClick="reset()">Reset</button>
       </div>
 
     </div>
-
+    
     <script src="dicee.js" charset="utf-8"></script>
   </body>
 

@@ -1,18 +1,19 @@
-.container {
-  width: 70%;
-  margin: auto;
-  text-align: center;
-}
-
-.dice {
-  text-align: center;
-  display: inline-block;
-
-}
 
 body {
   background-color: #393E46;
 }
+
+.container {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  align-items: center;
+}
+
+
 
 h1 {
   margin: 30px;
@@ -20,6 +21,8 @@ h1 {
   text-shadow: 5px 0 #232931;
   font-size: 8rem;
   color: #4ECCA3;
+  letter-spacing: 3px;
+  width:100%;
   
 }
 
@@ -33,6 +36,7 @@ p {
   font-size: 2rem;
   color: #4ECCA3;
   font-family: 'Indie Flower', cursive;
+ 
 }
 
 img {
@@ -40,7 +44,7 @@ img {
 }
 
 footer {
-  margin-top: 5%;
+  margin: 3% auto ;
   color: #EEEEEE;
   text-align: center;
   font-family: 'Indie Flower', cursive;
@@ -54,4 +58,111 @@ a{
 
 a:hover{
   color:#4ECCA3;
+}
+
+/*dice*/
+
+.dices{
+  justify-self: center;
+}
+
+.dice {
+  text-align: center;
+  display: inline-block;
+}
+
+
+/* contact side */
+
+.contact{
+  display:flex;
+  flex-direction: column;
+  gap:1rem;
+  align-items: flex-start;
+}
+
+
+/*Scoreboard*/
+.scoreboard{
+  width:20%;
+  margin-top:7rem;
+}
+
+.scoreboard p{
+  font-size:1rem;
+  margin:2px auto;
+}
+.score{
+  font-size:2rem !important;
+}
+
+/*Button*/
+
+.buttons{
+  width:100%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+}
+
+.button{
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+  letter-spacing: 3px;
+  background-color:#8DFFC9;
+  font-size:1rem;
+  display:block;
+  margin:3rem 1rem 1rem;
+  padding:12px 36px;
+  border-radius:6px;
+  transition: all 1s;
+  
+}
+
+.button:hover{
+  box-shadow: 0 0 30px 20px red inset;
+  
+}
+.button:active{
+  filter: drop-shadow(16px 16px 20px red);
+}
+
+/*Responsive screen with media query*/
+
+@media screen and (max-width:1280px) {
+
+  .container{
+    justify-content: flex-end;
+    
+  }
+  .scoreboard{
+    margin-top:1rem;
+  }
+  .player1{
+    margin-top:6rem;
+  }
+
+  .contact{
+    flex-direction: row;
+    width:100%;
+    justify-content: center;
+  }
+  
+}
+
+@media screen and (max-width:1040px) {
+
+  .container{
+    justify-content: center;
+  }
+  .dices{
+    width:100%;
+  }
+  .player1{
+    margin-top:1rem;
+  }
+  .button{
+    margin:1rem auto;
+  }
+  
 }
