@@ -63,6 +63,15 @@ a:hover{
 
 .set {
   margin: 10% auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+.notes{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .game-over {
@@ -95,4 +104,30 @@ a:hover{
   text-align: center;
   margin: 10px;
   background-color: white;
+}
+
+
+.note{
+  position:relative;
+  top:25px;
+  width:1.5rem;
+  opacity:0;
+}
+
+.noteAnimation{
+  animation-name:myMove;
+  animation-duration: 300ms;
+
+}
+
+
+@keyframes myMove{
+ 0%{
+  opacity: 1;
+  top:20px;
+ }
+ 100%{
+  opacity:0;
+  top:-220px;
+ }
 }

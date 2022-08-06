@@ -11,6 +11,7 @@ for(var i = 0;i < drums.length;i++)
 
     buttonAnimation(buttonInner);
 
+    noteAnimation(buttonInner);
   });
 }
 
@@ -20,6 +21,8 @@ document.addEventListener("keydown",function(event){  //anonymous function
   makeSound(event.key);
 
   buttonAnimation(event.key);
+
+  noteAnimation(event.key);
 
 });
 
@@ -78,6 +81,42 @@ function buttonAnimation(currentKey){
 
   setTimeout(function(){
     activeButton.classList.remove("pressed");
-  },100)
+  },100);
+
+}
+
+function noteAnimation(currentKey){
+
+  let notes = document.querySelectorAll(".note");
+  let i;
+  if(currentKey === "a"){
+    i = 0;
+  }
+  else if(currentKey === "s"){
+    i = 1;
+  }
+  else if(currentKey === "d"){
+    i = 2;
+  }
+  else if(currentKey === "f"){
+    i = 3;
+  }
+  else if(currentKey === "h"){
+    i = 4;
+  }
+  else if(currentKey === "j"){
+    i = 5;
+  }
+  else if(currentKey === "k"){
+    i = 6;
+  }
+  else if(currentKey === "l"){
+    i = 7;
+  }
+
+  notes[i].classList.add("noteAnimation");
+  setTimeout(function(){
+    notes[i].classList.remove("noteAnimation");
+  },300);
 
 }
