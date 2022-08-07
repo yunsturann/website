@@ -4,10 +4,14 @@
     <head lan="en">
         <meta charset="UTF-8">
         <title>Yunus Turan</title>
+        <!--Viewports-->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Css & Favicon-->
         <link rel="stylesheet" href="css folder/styles.css">
         <link rel="icon" href="images/favicon.ico">
+
+        <!--Google Fonts-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
@@ -15,16 +19,26 @@
     </head>
     
     <body>
-        <div class="top-container">
-            <img class="top-cloud" src="images/cloud.png" alt="cloud-img">
-            <h1>I'm Yunus.</h1>
-            <h2>a programmer.</h2>
-            <img class="bottom-cloud" src="images/cloud.png" alt="cloud-img">
-            <img src="images/mountain.png" alt="mountain-img">
-        </div>
 
-        <div class="middle-container">
-            <div class="profile">
+      <nav id="navbar">
+        <a href="#"><img id="profile-photo"src="images/yunusphoto.jpg" alt="pp"></a>
+        <div class="right-side">
+          <a href="#about">About</a>
+          <a href="#cta">Contact Me</a>
+          <a href="myProjects.html">Projects</a>
+        </div>
+      </nav>
+      
+      <header class="top-container">
+          <img class="top-cloud" src="images/cloud.png" alt="cloud-img">
+          <h1>I'm Yunus.</h1>
+          <h2>a programmer.</h2>
+          <img class="bottom-cloud" src="images/cloud.png" alt="cloud-img">
+          <img class="mountain" src="images/mountain.png" alt="mountain-img">
+      </header>
+
+        <section class="middle-container">
+            <div class="profile" id="about">
               <img class="profilePhoto"src="images/yunusphoto.jpg" alt="yunusPhoto" title="Yunus Turan">
               <h2>Hello.</h2>
               <p class="intro">I am a student at ESOGU.I'm such a aspiring programmer.I know C/C++ and am learning web development nowadays.<br>Also, my biggest passion is my love Dilber.</p>
@@ -44,28 +58,28 @@
               </div>
             </div>
             <hr>
-            <div class="contact-me">
+            <div class="contact-me" id="cta">
               <h2>Get In Touch</h2>
               <h3>Would you like to contact me?</h3>
               <p class="contactMessage">Do you want to talk about coding, movies, series, swimming and anything you want? If you want, you should use links below.</p>
               <a class="btn" href="mailto:eynstrne@gmail.com">CONTACT ME</a>
             </div>
-          </div>
 
-          <div class="bottom-container">
+          </section>
+
+          <footer class="bottom-container">
 
             <div class="vertical-align">
                 <a class="footer-link" href="https://github.com/yunsturann" target="_blank" title="yunsturann">GitHub</a>
                 <a class="footer-link" href="https://www.instagram.com/yunsturann/" target="_blank" title="yunsturann">Instagram</a>
-                <a class="footer-link" href="index2.html" target="_blank" title="oldWebsite">Website</a>
+                <a class="footer-link" href="index2.html" target="_blank" title="yunsturann">Website</a>
                 <a class="footer-link" href="myProjects.html" title="MyProjects">My Projects</a>
-                
                 <p>© 2022 Yunus Turan.</p>
             </div>
             
-          </div>
+          </footer>
           
-        
+        <script src="index.js"></script>
     </body>
 
 
