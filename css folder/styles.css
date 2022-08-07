@@ -9,13 +9,13 @@ h1{
     color:#66BFBF;
     margin-top:50px auto 0px auto;
     font-family: 'Sacramento', cursive;
-    font-size:5.625rem;
+    font-size: 565%;
 }
 
 h2{
     color:#66BFBF;
     font-family: 'Montserrat', sans-serif;
-    font-size:2.5rem;
+    font-size: 250%;
     font-weight:normal;
     padding-bottom:10px;
 }
@@ -24,29 +24,85 @@ h3{
     color:#11999E;
     font-family: 'Montserrat', sans-serif;
 }
+
 p{
     line-height:2;
 }
+
 a{
     color:#11999E;
 }
 
+hr{
+    border-style: dotted none none;
+    border-width:7px;
+    color:#EAF6F6;
+    width:4%;
+    margin: 50px auto;
+
+}
+/*nav section*/
+nav{
+    background-color: #E4F9F5;
+    padding:1%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    gap:5rem;
+    position: fixed;
+    top:0;
+    z-index: 1;
+    width: 100%;
+    transition: top 0.3s;
+    opacity:0.9;
+}
+
+#profile-photo{
+    width:6rem;
+    height:6rem;
+    border-radius: 100%;
+}
+.right-side a{ 
+    padding:1.5rem;
+    text-decoration: none;
+}
+.right-side a:first-child{
+    color:#2e4d41;
+}
+
+
+.right-side a:hover{
+    color:#2e4d41;
+    font-weight: bold;
+}
+
+
+/*header section*/
 .top-container{
+
     background-color: #E4F9F5;
     position:relative;
-    padding-top:100px;
+    padding-top:150px;
+    width:100%;
+}
+
+.mountain{
+    width:40%;
 }
 
 .top-cloud{
     position:absolute;
-    right:300px;
-    top:50px;
+    right:20%;
+    top:20%;
+    width:10%;
 }
 
 .bottom-cloud{
     position:absolute;
-    left:300px;
-    bottom:300px;
+    left:20%;
+    bottom:40%;
+    width:10%;
 }
 
 .middle-container{
@@ -54,7 +110,7 @@ a{
 }
 
 .profilePhoto{
-    width:220px;
+    width:200px;
     height:200px;
     border-radius:100%;
 }
@@ -120,6 +176,7 @@ a{
     margin:40px auto 60px;
 }
 
+/*footer section*/
 .bottom-container{
    background-color: #66BFBF;
    position:relative;
@@ -148,12 +205,5 @@ a{
 
 }
 
-hr{
-    border-style: dotted none none;
-    border-width:7px;
-    color:#EAF6F6;
-    width:4%;
-    margin: 50px auto;
 
-}
 
