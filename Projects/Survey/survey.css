@@ -1,0 +1,131 @@
+*{
+    margin:0;
+    padding:0;
+    color:#40514E;
+    font-family:Arial, Helvetica, sans-serif;
+    
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+/*Sidebar*/
+.sidebar{
+    display:inline-flex;
+    position:fixed;
+    flex-direction: column;
+    gap:1rem;
+    top:30%;
+    text-align: center;
+}
+
+.sidebar a{
+    border-radius: 0px 15px 15px 0px;
+    width:120px;
+    padding:20px;
+    background-color:green;
+    position: relative;
+    left:-100px;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    font-size:1rem;
+    font-weight: bold;
+}
+.sidebar a:first-child{
+    background-color: #AD4807;
+    color:#AD4807;
+}
+.sidebar a:last-child{
+    background-color: #FA863C;
+    color:#FA863C;
+}
+
+.sidebar a:hover{
+    color:#2C3333;
+    left:0;
+    text-decoration: underline;
+    box-shadow: 10px 5px 15px red;;
+}
+
+
+
+/*Container for content*/
+#container{
+    background-color: #A5C9CA;
+    min-height:600px;
+    width:35%;
+    margin:40px auto;
+    padding:20px;
+    line-height:2;
+}
+input{
+    padding:0.5rem;
+}
+
+.firstTitle{
+    color:#2C3333;
+    text-align: center;
+    padding:15px;
+}
+label{
+    font-size:16px;
+    font-weight: 480;
+}
+
+.smallWeight{
+    font-size:14px;
+    font-weight: 400;
+    color:rgb(46, 109, 109);
+}
+.expand{
+    width:90%;
+    border-color:#E7F6F2;
+    background-color:#E7F6F2;
+    outline: none;
+    text-indent:3px;
+}
+
+input[type="radio"]:checked + span,input[type="checkbox"]:checked + label{
+    font-weight: bold;
+}
+
+input[type="checkbox"]{
+    margin-right:0.5rem;
+}
+
+input:focus, textarea:focus, select:focus{
+    transition-duration: 1s;
+    filter:drop-shadow(0 0 10px brown);
+}
+
+textarea{
+max-width: 100%;
+margin-top:1rem;
+}
+
+/*Button*/
+.buttons{
+    display:flex;
+    justify-content: flex-start;
+    gap:2rem;
+    padding-top:1rem;
+    
+}
+.button{
+    width:42.5%;
+    
+    background-color:rgb(180, 207, 217);
+    border-style:solid;
+    border-radius:10px;
+    padding:5px 15px;
+}
+.button:hover{
+    background-color: rgb(100, 122, 130);
+    color:#2C3333;
+    text-decoration: underline;
+    font-weight: bolder;
+    transition-duration: 1s;
+    filter:drop-shadow(0 0 15px red);
+    
+}
