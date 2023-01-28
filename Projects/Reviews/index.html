@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starter</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="container">
+         <!-- title -->
+        <div class="title">
+          <h2>our reviews</h2>
+          <div class="underline"></div>
+        </div>
+        <!-- review -->
+        <article class="review">
+          <div class="img-container">
+            <img src="person-1.jpeg" alt="" id ="person-img">
+          </div>
+          <h4 id="author">sara jones</h4>
+          <p id="job">ux designer</p>
+          <p id="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+             Aliquam imperdiet massa lacus, nec suscipit sem maximus venenatis.
+              Donec iaculis leo eu dui facilisis feugiat. In eu volutpat justo. 
+              Mauris quis sodales neque.
+          </p>
+        <!-- prev and next buttons -->
+          <div class="button-container">
+            <button onclick = "btnLeft()" class="prev-btn left-btn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button onclick="btnRight()" class="next-btn right-btn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>  
+
+        <!-- random review -->
+          <button class="random-btn">suprise me</button>
+
+        </article>
+      </section>
+      
+    </main>
+    <!-- javascript -->
+    <script src="app.js"></script>
+  </body>
+</html>
