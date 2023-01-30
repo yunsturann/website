@@ -44,7 +44,7 @@ hr{
 /*nav section*/
 nav{
     background-color: #E4F9F5;
-    padding:1%;
+    padding:0.5%;
     display:flex;
     justify-content: space-around;
     align-items: center;
@@ -63,7 +63,7 @@ nav{
     height:6rem;
     border-radius: 100%;
 }
-.right-side a{ 
+.right-side a{
     padding:1.5rem;
     text-decoration: none;
 }
@@ -119,22 +119,22 @@ nav{
     border-radius: 100%;
     float:left;
     margin-right:30px;
-    width:25%;   
+    width:25%;
 }
 
 .coding-png{
-    
+
     width:25%;
     float:right;
     margin-left:30px;
-    
-    
+
+
 }
 .skill-row{
     width:50%;
     margin:100px auto;
     text-align: left;
-    
+
 }
 .intro{
     width:36%;
@@ -156,9 +156,9 @@ nav{
     font-size: 20px;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
-   
+
 }
-  
+
 .btn:hover {
     background: #30e3cb;
     background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ad);
@@ -182,7 +182,7 @@ nav{
    position:relative;
    top:100px;
    height:180px;
-   
+
 }
 .vertical-align{
     padding-top:50px;
@@ -204,6 +204,3 @@ nav{
     color:#EAF6F6;
 
 }
-
-
-
