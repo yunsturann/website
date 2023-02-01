@@ -83,6 +83,7 @@ li {
 }
   
 li span {
+    color:blue;
     float: right;
     cursor: pointer;
 }
