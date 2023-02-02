@@ -7,7 +7,7 @@ const resetAllBtn = document.getElementById("reset");
 
 
 
-/////////////////// 
+///////////////////
 // Events        //
 ///////////////////
 
@@ -27,23 +27,23 @@ function submitItem(e){
     }
     // add item
     addItem(input);
-    
+
     // push item to the list
     todos.push(input);
     // update storage
     updateStorage()
-   
+
 }
 
 // add item to the list as a html not to the array.
 function addItem(input){
-    
+
     let element = document.createElement("li");
     element.innerHTML = input + '<span class="delete">X</span>';
     taskList.appendChild(element);
-   
+
     taskInput.value = "";
-    
+
     element.querySelector(".delete").addEventListener("click",deleteBtn);
     // if there is a item make its style block of resetAllButton
     renderResetButton()
@@ -69,13 +69,14 @@ function deleteItem(node){
     renderResetButton()
 }
 
-/////////////////// 
+///////////////////
 // local storage //
 ///////////////////
 
 function loadTasksFromStorage(){
     getStorage();
-    todos.forEach((item)=>addItem(item));
+    if(todos != null)
+      todos.forEach((item)=>addItem(item));
 }
 
 function updateStorage(){
@@ -87,7 +88,7 @@ function getStorage(){
     todos = JSON.parse(localStorage.getItem("todos"));
 }
 
-/////////////////// 
+///////////////////
 // Reset Button  //
 ///////////////////
 
@@ -98,7 +99,7 @@ function resetTasks(){
     //send all nodes
     deleteItem(tasks[i]);
   }
- 
+
 }
 
 function renderResetButton(){
