@@ -1,4 +1,4 @@
-let todos = [];
+let todos = new Array();
 
 const taskInput = document.getElementById("task");
 const addTaskBtn = document.getElementById("add-task-btn");
