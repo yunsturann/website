@@ -2,8 +2,6 @@ body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     padding:1.5rem 3rem;
     background-image: url("images/background.jpg");
-    /*background-size:cover;
-    background-position: center;*/
     font-size: 1.2rem;
     display: flex;
     flex-direction: column;
@@ -70,26 +68,25 @@ button[type="submit"] {
     font-size: 16px;
     cursor: pointer;
 }
-  
+
 button[type="submit"]:hover {
     background-color: #3e8e41;
 }
-  
+
 ul {
     list-style: none;
     padding: 0 20%;
     margin: 0;
 }
-  
+
 li {
     background-color: #f9f9f9;
     padding: 0.7rem;
     margin-bottom: 0.7rem;
     border-radius: 0.3rem;
 }
-  
+
 li span {
-    color:blue;
     float: right;
     cursor: pointer;
 }
@@ -98,7 +95,6 @@ li span:hover {
     color: red;
     font-weight: bold;
 }
-<<<<<<< HEAD:Projects/To-Do-List/style.css
 
 #reset{
     display: none;
@@ -107,7 +103,7 @@ li span:hover {
 }
 
 
-  
+
 @media only screen and (max-width: 1200px){
     .container{
         width: 75%;
@@ -126,12 +122,12 @@ li span:hover {
     .container{
         width: 90%;
     }
-    
+
     form{
         justify-content:left;
         padding:1rem 15%;
     }
-    
+
     #task{
         width: 100%;
     }
@@ -149,7 +145,7 @@ li span:hover {
     }
 
 
-   
+
 
 }
 
@@ -162,6 +158,3 @@ li span:hover {
         font-size: 0.7rem;
     }
 }
-=======
-  
->>>>>>> be7b1bad2cfbd266daa805a8ee67fb950aff3f04:Projects/To-Do-List/index.css
