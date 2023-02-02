@@ -89,6 +89,7 @@ li {
 }
   
 li span {
+    color:blue;
     float: right;
     cursor: pointer;
 }
@@ -97,6 +98,7 @@ li span:hover {
     color: red;
     font-weight: bold;
 }
+<<<<<<< HEAD:Projects/To-Do-List/style.css
 
 #reset{
     display: none;
@@ -160,3 +162,6 @@ li span:hover {
         font-size: 0.7rem;
     }
 }
+=======
+  
+>>>>>>> be7b1bad2cfbd266daa805a8ee67fb950aff3f04:Projects/To-Do-List/index.css
