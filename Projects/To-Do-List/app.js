@@ -75,8 +75,8 @@ function deleteItem(node){
 
 function loadTasksFromStorage(){
     getStorage();
-    if(todos != null)
-      todos.forEach((item)=>addItem(item));
+    todos.forEach((item)=>addItem(item));
+
 }
 
 function updateStorage(){
@@ -85,7 +85,12 @@ function updateStorage(){
 
 // check storage and assign them to the array
 function getStorage(){
+  if(localStorage.getItem("todos") === null){
+    todos = [];
+  }else{
     todos = JSON.parse(localStorage.getItem("todos"));
+  }
+
 }
 
 ///////////////////
