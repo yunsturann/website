@@ -1,10 +1,10 @@
-let todos = new Array();
+let todos = [];
 
 const taskInput = document.getElementById("task");
 const addTaskBtn = document.getElementById("add-task-btn");
 const taskList = document.getElementById("task-list");
 const resetAllBtn = document.getElementById("reset");
-
+const filterInput = document.getElementById("filter");
 
 
 ///////////////////
@@ -15,6 +15,7 @@ const resetAllBtn = document.getElementById("reset");
 window.addEventListener("DOMContentLoaded", loadTasksFromStorage);
 addTaskBtn.addEventListener("click",submitItem);
 resetAllBtn.addEventListener("click",resetTasks);
+filterInput.addEventListener("keyup",filterTasks);
 
 //if submit button runs
 function submitItem(e){
@@ -115,3 +116,27 @@ function renderResetButton(){
     resetAllBtn.style.display = "block";
   }
 }
+
+////////////////////
+// Filter Section //
+////////////////////
+
+function filterTasks(e){
+  //get input from user make it lower case and remove whitespace
+  let textInput = e.target.value.toLowerCase().trim();
+  const listElements = document.querySelectorAll("li");  
+  
+  //compare input with the list items and set their display property
+  for(let i=0;i<todos.length;i++){
+    if(todos[i].toLowerCase().trim().includes(textInput)){
+      listElements[i].setAttribute("style","display: block");
+    }else{
+      listElements[i].setAttribute("style","display: none");
+    }
+
+  }
+
+}
+
+
+

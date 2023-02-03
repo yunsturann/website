@@ -25,7 +25,7 @@ body {
     justify-content:space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 
 #heading-img{
@@ -49,7 +49,7 @@ form{
     justify-content:space-between;
     text-align: center;
     gap:1rem;
-    padding:1rem 20%;
+    padding:0 20%;
 }
 
 form label{
@@ -74,7 +74,20 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #3e8e41;
 }
+
+/*filter-section*/
+.filter-section{
+    padding: 0.5rem 20%;
+}
+
+#filter{
+    padding: 0.3rem;
+    font-size: 1rem;
+    width: 40%;
+}   
   
+
+/*Task list*/
 ul {
     list-style: none;
     padding: 0 20%;
@@ -98,6 +111,7 @@ li span:hover {
     font-weight: bold;
 }
 
+/*reset button*/
 #reset{
     display: none;
     margin: 0 20%;
@@ -110,7 +124,15 @@ li span:hover {
     .container{
         width: 75%;
     }
+}
 
+@media only screen and (max-width: 1000px){
+    .container{
+        width: 80%;
+    }
+    form{
+        gap:0.5rem;
+    }
     #task{
         width: 100%;
     }
@@ -127,15 +149,15 @@ li span:hover {
     
     form{
         justify-content:left;
-        padding:1rem 15%;
+        padding:0.5rem 15%;
     }
     
-    #task{
-        width: 100%;
-    }
-
     #heading-img{
         width: 18vw;
+    }
+
+    .filter-section{
+        padding: 0 15% 0.5rem;
     }
 
     ul {
@@ -145,9 +167,6 @@ li span:hover {
     #reset{
         margin: 0 15%;
     }
-
-
-   
 
 }
 
