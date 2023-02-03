@@ -1,0 +1,60 @@
+body{
+    background-color: rgb(54, 50, 50);
+ 
+}
+h1{
+    text-align: center;
+}
+.container{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+}
+
+form{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#generated-password{
+    max-width:100%;   
+}
+
+#clipboard-btn{
+    cursor: default;
+    
+}
+
+@media  screen and (max-width: 950px){
+    .container{
+        width: 70%;
+        padding: 1rem;
+    }
+}
+
+@media  screen and (max-width: 600px){
+    .container{
+        width: 90%;
+        padding: 0;
+    }
+    form{
+        width: 100%;
+    }
+    #generated-password{
+        padding-left: 0.3rem !important;
+    }
+}
+
+@media  screen and (max-width: 404px){
+    .container{
+        width: 100%;
+        padding: 1rem !important;
+    }
+    form{
+        width: 100%;
+    }
+}
