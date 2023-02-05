@@ -67,7 +67,7 @@ nav{
     border-radius: 100%;
 }
 .right-side{
-    display:block;
+    display:flex;
 }
 
 .right-side a{
@@ -99,17 +99,14 @@ nav{
     transform: rotate(90deg);
 }
 
-
 @media screen and (max-width:600px) {
     nav{
         flex-wrap: wrap;
     }
     .right-side{
-      /* display:flex;*/
         display: none;
         flex-direction: column;
         width: 100%;
-        
     }
 
     .right-side a{

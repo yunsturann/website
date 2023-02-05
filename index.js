@@ -12,23 +12,26 @@ let currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 
-// nav-toggle
-
+let screen = window.matchMedia("(max-width: 600px)");
 const rightSide = document.querySelector(".right-side");
 const navToggle = document.querySelector(".nav-toggle");
-const navbar = document.getElementById("navbar");
 
-navToggle.addEventListener("click",renderNavbar);
+screen.addListener(myFunction); // listen screen width
+navToggle.addEventListener("click",renderNavbar); // nav toggle click event
+
+function myFunction(screen){
+  if (screen.matches) { // 600px or less
+    rightSide.setAttribute("style","display:none");
+  }
+  else{ //more than 600px
+    rightSide.setAttribute("style","display:flex");
+  }
+}
 
 function renderNavbar(){
-  if(rightSide.style.display === "none"){
+  (rightSide.style.display === "flex") ?
+   rightSide.setAttribute("style","display:none") :
    rightSide.setAttribute("style","display:flex");
-  }
-  else if(rightSide.style.display === "flex"){
-   rightSide.setAttribute("style","display:none");
-  }else{
-    rightSide.setAttribute("style","display:none");
-  } // will be fixed
 }
 
 
