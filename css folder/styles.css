@@ -204,3 +204,77 @@ nav{
     color:#EAF6F6;
 
 }
+
+/*Projects-Section*/
+.container{
+    padding:3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:1rem;
+
+}
+
+.item{
+    border-radius: 6px;
+    background-color: #BDCDD6;
+    width: 300px;
+    min-height:300px ;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item img{
+    width: 100%;
+    border-radius: 6px 6px 0 0;
+    height: 45%;
+}
+
+.item-body{
+    margin-bottom: 2rem;
+    height: 30%;
+}
+.item-body h3{
+    margin:0.2rem 0 0;
+}
+
+
+
+
+.item-link {
+    background: #9dceef;
+
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    border-radius: 0 0 6px 6px;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 0.7rem;
+    text-decoration: none;
+    display: block;
+  }
+
+.item-link:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #49a3e0, #4d9fd6);
+    background-image: -moz-linear-gradient(top, #4ea5de, #4191c7);
+    background-image: -ms-linear-gradient(top, #4ea3db, #478dbc);
+    background-image: -o-linear-gradient(top, #44a5e6, #3f89ba);
+    background-image: linear-gradient(to bottom, #52a9e2, #5197c6);
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+
+    .container{
+        padding:2rem;
+    }
+    .item{
+        width: 250px;
+    }
+}
