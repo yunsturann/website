@@ -12,5 +12,23 @@ let currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 
-// img clicking voice
+// nav-toggle
+
+const rightSide = document.querySelector(".right-side");
+const navToggle = document.querySelector(".nav-toggle");
+const navbar = document.getElementById("navbar");
+
+navToggle.addEventListener("click",renderNavbar );
+navbar.addEventListener("mouseleave",() => rightSide.setAttribute("style","display:none"));
+
+function renderNavbar(){
+  if(rightSide.style.display==="none"){
+    rightSide.setAttribute("style","display:flex");
+  }
+  else{
+    rightSide.setAttribute("style","display:none");
+  }
+}
+
+
 

@@ -7,6 +7,8 @@
         <!--Viewports-->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- font-awesome -->
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
         <!--Css & Favicon-->
         <link rel="stylesheet" href="css folder/styles.css">
         <link rel="icon" href="images/favicon.ico">
@@ -22,11 +24,15 @@
 
       <nav id="navbar">
         <a href="#"><img id="profile-photo"src="images/littleDolphin.png" alt="pp"></a>
+        <button class="nav-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
         <div class="right-side">
           <a href="#about">About</a>
           <a href="#cta">Contact Me</a>
-          <a href="myProjects.html">Projects</a>
+          <a href="#projects">Projects</a>
         </div>
+       
       </nav>
 
       <header class="top-container">
@@ -60,7 +66,7 @@
 
             <hr>
 
-            <h2>Projects</h2>
+            <h2 id="projects">Projects</h2>
             <div class="container">
 
               <div class="item">
@@ -87,7 +93,7 @@
                       <h3>My All Projects</h3>
                       <p>Contains all projects I made.</p>
                   </div>
-                    <a class="item-link" href="">Go to the Project</a>
+                    <a class="item-link" href="myProjects.html">Go to the Project</a>
               </div>
 
               <div class="item">
@@ -96,11 +102,10 @@
                       <h3>Tindog</h3>
                       <p>A responsive website of a startup project made with the help of Bootstrap5.</p>
                   </div>
-                  <a class="item-link" href="">Go to the Project</a>
+                  <a class="item-link" href="Projects\TinDog-Start-master\tindog.html">Go to the Project</a>
               </div>
 
             </div>
-
 
             <hr>
             <div class="contact-me" id="cta">

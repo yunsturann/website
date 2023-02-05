@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     color:#40514E;
     margin:0;
@@ -49,7 +53,6 @@ nav{
     justify-content: space-around;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
-    gap:5rem;
     position: fixed;
     top:0;
     z-index: 1;
@@ -75,6 +78,43 @@ nav{
 .right-side a:hover{
     color:#2e4d41;
     font-weight: bold;
+}
+
+.nav-toggle {
+    font-size: 1.5rem;
+    color: var(--clr-primary-5);
+    background: transparent;
+    border-color: transparent;
+    transition: var(--transition);
+    cursor: pointer;
+    display: none;
+}
+
+.nav-toggle:hover {
+    color: var(--clr-primary-1);
+    transform: rotate(90deg);
+}
+
+
+@media screen and (max-width:600px) {
+    nav{
+        flex-wrap: wrap;
+    }
+    .right-side{
+      /* display:flex;*/
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+
+    .right-side a{
+        padding:0.6rem;
+        background-color: whitesmoke;
+        margin:0.2rem
+    }
+    .nav-toggle {
+        display: block;
+    }
 }
 
 
@@ -182,8 +222,8 @@ nav{
    position:relative;
    top:100px;
    height:180px;
-
 }
+
 .vertical-align{
     padding-top:50px;
 }
@@ -217,7 +257,7 @@ nav{
 
 .item{
     border-radius: 6px;
-    background-color: #BDCDD6;
+    background-color: #ebf5fb;
     width: 300px;
     min-height:300px ;
 
@@ -239,8 +279,6 @@ nav{
 .item-body h3{
     margin:0.2rem 0 0;
 }
-
-
 
 
 .item-link {
