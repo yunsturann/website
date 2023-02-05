@@ -66,6 +66,10 @@ nav{
     height:6rem;
     border-radius: 100%;
 }
+.right-side{
+    display:block;
+}
+
 .right-side a{
     padding:1.5rem;
     text-decoration: none;
@@ -102,9 +106,10 @@ nav{
     }
     .right-side{
       /* display:flex;*/
+        display: none;
         flex-direction: column;
         width: 100%;
-        display: none;
+        
     }
 
     .right-side a{

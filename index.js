@@ -18,17 +18,19 @@ const rightSide = document.querySelector(".right-side");
 const navToggle = document.querySelector(".nav-toggle");
 const navbar = document.getElementById("navbar");
 
-navToggle.addEventListener("click",renderNavbar );
-navbar.addEventListener("mouseleave",() => rightSide.setAttribute("style","display:none"));
+navToggle.addEventListener("click",renderNavbar);
 
 function renderNavbar(){
-  if(rightSide.style.display==="none"){
-    rightSide.setAttribute("style","display:flex");
+  if(rightSide.style.display === "none"){
+   rightSide.setAttribute("style","display:flex");
   }
-  else{
+  else if(rightSide.style.display === "flex"){
+   rightSide.setAttribute("style","display:none");
+  }else{
     rightSide.setAttribute("style","display:none");
-  }
+  } // will be fixed
 }
+
 
 
 
