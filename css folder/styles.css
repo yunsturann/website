@@ -249,7 +249,7 @@ nav{
 
 /*Projects-Section*/
 .container{
-    padding:3rem;
+    padding:3rem 15%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -281,7 +281,9 @@ nav{
 .item-body h3{
     margin:0.2rem 0 0;
 }
-
+.item-body p{
+    padding:0.2rem;
+}
 
 .item-link {
     background: #9dceef;
