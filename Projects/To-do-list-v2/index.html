@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+    <!--FontAwesome, Bootstrap and CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="w-50 mx-auto">
+
+    <h1 class="my-3 mt-5">To Do List</h1>
+
+    <div class="input-group mb-3">
+        <input id="task-input" value="" type="text" class="form-control p-3" placeholder="Add a Task" >
+        <button id="btn-submit" class="btn btn-outline-primary px-4" type="submit">Submit</button>
+    </div>
+
+    <div class="input-group mb-3">
+        <input id="input-search" type="text" class="form-control" placeholder="Search">
+        <button id="btn-search" class="btn btn-outline-secondary" type="button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        
+    </div>
+
+
+    <hr>
+    
+    <ul class="list-group my-3">
+        
+    </ul>
+
+    <button id="delete-all-btn"class="btn btn-outline-secondary">Delete All</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
