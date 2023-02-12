@@ -1,3 +1,63 @@
+body{
+    background-color: rgb(34, 31, 31);
+}
+
+.container{
+    background-color: #2C3333;
+    width: 50%;
+    color:white;
+}
+
+.dark-mode{
+    cursor: pointer;
+    color:white;
+}
+
 #delete-all-btn{
     display: none;
+}
+
+input{
+    box-shadow: none !important;
+}
+
+.delete{
+    font-weight: bolder;
+    cursor:pointer;
+}
+.delete:hover{
+    color:red;
+}
+
+.search-icon{
+    width: 100%;
+    border-radius:0;
+
+}
+#input-search{
+    display: none;
+}
+
+@media screen and (max-width:1200px) {
+    .container{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .container{
+        width: 90%;
+        padding: 1rem !important;
+    }
+    #task-input{
+        border-radius: 0px !important;
+    }
+    #btn-submit{
+        width: 100%;
+        border-radius: 0px !important;
+        margin-top:0.5rem;
+    }
+    #delete-all-btn{
+        width: 100%;
+    }
 }

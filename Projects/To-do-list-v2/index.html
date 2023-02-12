@@ -12,32 +12,34 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body class="w-50 mx-auto">
-
-    <h1 class="my-3 mt-5">To Do List</h1>
-
-    <div class="input-group mb-3">
-        <input id="task-input" value="" type="text" class="form-control p-3" placeholder="Add a Task" >
-        <button id="btn-submit" class="btn btn-outline-primary px-4" type="submit">Submit</button>
-    </div>
-
-    <div class="input-group mb-3">
-        <input id="input-search" type="text" class="form-control" placeholder="Search">
-        <button id="btn-search" class="btn btn-outline-secondary" type="button">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+<body>
+   
+    <div class="container mx-auto p-5 mt-4">
+        <header>
+            <h1 class="mb-3 d-inline-block p-1">To Do List</h1>
+            <i class="dark-mode fa-solid fa-moon float-end p-1 m-1 fa-2x"></i>
+        </header>
         
-    </div>
 
-
-    <hr>
+        <div class="input-group mb-3">
+            <input id="task-input" value="" type="text" class="form-control p-3" placeholder="Add a Task" >
+            <button id="btn-submit" class="btn btn-outline-primary px-4" type="submit">Submit</button>
+        </div>
     
-    <ul class="list-group my-3">
+        <div class="input-group mb-3">
+            <input id="input-search" type="text" class="form-control" placeholder="Search">
+            <button id="btn-search" class="search-icon btn btn-secondary" type="button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
         
-    </ul>
+        <hr>
+        
+        <ul class="list-group my-3"></ul>
+        <button id="delete-all-btn"class="btn btn-outline-danger px-5">Delete All</button>
+    </div>
 
-    <button id="delete-all-btn"class="btn btn-outline-secondary">Delete All</button>
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="app.js"></script>
 </body>

@@ -5,37 +5,52 @@ const submitBtn = $("#btn-submit");
 const deleteAllBtn = $("#delete-all-btn");
 
 
-$("#btn-search").click(function(){
-    $("#input-search").slideToggle(500);
-})
 
+// add todo by pressing enter 
+$("#task-input").keypress(function (e) { 
+    if(e.key === "Enter"){
+        submitTask();
+    }
+});
+
+// when document is ready, load todos
+$(function () {
+    loadTodosFromStorage();
+});
+
+/////////////////////////
+// Add and Delete Section
+/////////////////////////
 submitBtn.click(submitTask);
-deleteAllBtn.click(deleteAll);
 
 function submitTask(e){
-    // prevent default 
-    e.preventDefault();
+    //e.preventDefault();
     // get input entered
     let taskInput = $("#task-input").val();
     // if input is empty, end it up 
-  
     if(taskInput ==="") return; 
     // push to do array todos 
     todos.push(taskInput);
+    // add todo 
+    addTodo(taskInput);
+    // update storage
+    updateStorage();
+}
+
+function addTodo(todo){
     // create list item
     let item = document.createElement("li");
     item.classList.add("list-group-item");
-    item.innerHTML = `${taskInput}<span class="delete float-end">X</span>`
+    item.innerHTML = `${todo}<span class="delete float-end">X</span>`
     //add item as a last child of ul.
     $("ul").append(item);
     // clear input value
     $("#task-input").val("");
-
     // delete(X) event listener
     item.querySelector(".delete").addEventListener("click",(event)=>deleteNode(event.target));
-
     // check todos for display of btn
     checkDeleteAllBtn()
+   
 }
 
 function deleteNode(node){
@@ -48,15 +63,27 @@ function deleteNode(node){
     node.parentNode.remove();
     // check todos for display of btn
     checkDeleteAllBtn()
+    // update storage
+    updateStorage();
 }
 
+//////////////////
+// reset tasks btn
+
+deleteAllBtn.click(deleteAll);
+
 function deleteAll(){
+
+    if(prompt("Are you sure to delete all tasks?","Click Buttons to apply or not!") === null) return;
+    
     // select all Li and remove
     $("li").remove();
     // make todos empty
     todos = [];
     // check todos for visibility of btn
     checkDeleteAllBtn()
+    // update storage
+    updateStorage();
 }
 
 function checkDeleteAllBtn(){
@@ -66,5 +93,74 @@ function checkDeleteAllBtn(){
         deleteAllBtn.fadeIn(500);
 }
 
+////////////////
+// Local Storage
 
+function updateStorage(){
+    localStorage.setItem("todos",JSON.stringify(todos));
+}
 
+function loadTodosFromStorage(){
+    if(localStorage.getItem("todos") === null){
+        todos = [];
+    } else{
+        todos = JSON.parse(localStorage.getItem("todos"));
+        todos.forEach((item)=>addTodo(item));
+    }
+}
+
+////////////////////
+// Filter Section //
+////////////////////
+
+$("#input-search").on("keyup",filterTasks);
+
+function filterTasks(e){
+    //get input from user make it lower case and remove whitespace
+    let textInput = e.target.value.toLowerCase().trim();
+    const listElements = document.querySelectorAll("li");  
+    
+    //compare input with the list items and set their display property
+    for(let i=0;i<todos.length;i++){
+      if(todos[i].toLowerCase().trim().includes(textInput)){
+        listElements[i].setAttribute("style","display: block");
+      }else{
+        listElements[i].setAttribute("style","display: none");
+      }
+    }//end-for
+}
+
+//////////////////////////////////
+//add a slide toggle to search icon 
+
+$("#btn-search").click(function(){
+    let input = $("#input-search");
+    if(input.css("display") === "none"){
+        $("#btn-search").removeClass("search-icon");
+        input.fadeIn(500);
+    }else{
+        input.fadeOut(500);
+        setTimeout(()=>{
+            $("#btn-search").addClass("search-icon");
+        },500)
+    }
+})
+
+////////////
+// Dark mode
+
+const moonIcon = $(".dark-mode");
+
+moonIcon.click(function(){
+    if($("body").css("background-color") === "rgb(255, 255, 255)"){
+        $(".container").css("background-color", "#2C3333");
+        $(".container").css("color", "white");
+        $("body").css("background-color","rgb(34, 31, 31)");
+        moonIcon.css("color","white");
+    } else{
+        $(".container").css("background-color", "#eceaea");
+        $(".container").css("color", "black");
+        $("body").css("background-color","white");
+        moonIcon.css("color","black");
+    }
+})
