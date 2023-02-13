@@ -29,6 +29,10 @@ form{
     
 }
 
+#clipboard-btn:hover{
+    background-color: green;
+}
+
 @media  screen and (max-width: 950px){
     .container{
         width: 70%;

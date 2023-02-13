@@ -1,18 +1,19 @@
-
+//chars to generate passwords
 const alphabet="ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 const specialCh = "@!.,+-*&%^/";
 
-
+// Elements
 const clipboardEl = document.getElementById("clipboard-btn");
 const passwordEl = document.getElementById("generated-password");
 const passwordBtn = document.getElementById("generate-btn");
 const messageEl = document.getElementById("message");
+const sliderEl = document.getElementById("size-input");
 
-
+// Events
 passwordBtn.addEventListener("click",generator);
 clipboardEl.addEventListener("click",clipBoard);
-passwordEl.addEventListener("click",clipBoard);
-
+sliderEl.addEventListener("input",(e)=>
+document.getElementById("slider-value").textContent = e.target.value);
 
 function clipBoard(e){
     e.preventDefault();
@@ -28,20 +29,8 @@ function clipBoard(e){
 function generator(e){
     e.preventDefault();
     
-    let size = document.getElementById("size-input").value;
+    let size = sliderEl.value;
     //check size input
-  
-    if(size.length === 0 || size <= 0){
-        Alert("Enter size!");
-        return;
-    }
-
-    size = parseInt(size);
-
-    if(size > 35){
-        Alert("Size too big!\nMax 35 characters!");
-        return;
-    }
 
     let checked =  document.getElementById("special-input").checked;
     let password ="";
@@ -59,14 +48,15 @@ function generator(e){
     Alert("Password Generated Succesfully!");
 
     clipboardEl.setAttribute("style","cursor: pointer");
-    passwordEl.setAttribute("style","cursor: copy");
-
     passwordEl.textContent = password;
     
 }
 
 function Alert(text){
     messageEl.textContent = text;
+    setTimeout(function(){
+        messageEl.textContent = "";
+    },2500)
 }
 
 function generateIndex(upper){
