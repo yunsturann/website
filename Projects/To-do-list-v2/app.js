@@ -48,6 +48,8 @@ function addTodo(todo){
     $("#task-input").val("");
     // delete(X) event listener
     item.querySelector(".delete").addEventListener("click",(event)=>deleteNode(event.target));
+    // move the dblclicked item to the top 
+    item.addEventListener("dblclick",moveUp);
     // check todos for display of btn
     checkDeleteAllBtn()
    
@@ -56,7 +58,6 @@ function addTodo(todo){
 function deleteNode(node){
     // get and assign the text content of list item, slice x from textContent
     let text = node.parentNode.textContent.slice(0,-1); 
-    console.log(text);
     //delete item from array
     todos.splice(todos.indexOf(text),1);
     // remove item's parent('li') from html
@@ -164,3 +165,24 @@ moonIcon.click(function(){
         moonIcon.css("color","black");
     }
 })
+
+////////////////
+// dbclick event
+
+function moveUp(e){
+   
+    $("ul").prepend(e.target);
+    let text = e.target.textContent.slice(0,-1);
+    shiftTodos(todos.indexOf(text));
+
+}
+
+function shiftTodos(index){
+    // shifting elements
+    let prependedItem = todos[index];
+    for(let i = index;i>0;i--){
+        todos[i] = todos[i-1];
+    }
+    todos[0] = prependedItem;
+    updateStorage();
+}
