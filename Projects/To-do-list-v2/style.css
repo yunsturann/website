@@ -7,10 +7,23 @@ body{
     width: 50%;
     color:white;
 }
+/*header*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.right-side a{
+    color:white;
+}
+
 
 .dark-mode{
     cursor: pointer;
     color:white;
+    padding-right:0 !important;
 }
 
 #delete-all-btn{
@@ -34,13 +47,31 @@ input{
     border-radius:0;
 
 }
+
+i:hover{
+    color:red !important;
+}
+
+.fa-chevron-up{
+  position: relative;
+  top:5px;
+}
+
 #input-search{
     display: none;
+}
+
+.list-item-dark{
+    background-color: rgb(221, 219, 219);
+    border-color: black;
 }
 
 @media screen and (max-width:1200px) {
     .container{
         width: 70%;
+    }
+    .right-side i{
+        font-size: 1.75rem !important;
     }
 }
 
@@ -59,5 +90,15 @@ input{
     }
     #delete-all-btn{
         width: 100%;
+    }
+   
+    .right-side i{
+        font-size: 1.5rem !important;
+    }
+}
+
+@media screen and (max-width:320px){
+    header{
+        justify-content: center;
     }
 }

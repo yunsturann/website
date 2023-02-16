@@ -4,8 +4,6 @@ let todos =[];
 const submitBtn = $("#btn-submit");
 const deleteAllBtn = $("#delete-all-btn");
 
-
-
 // add todo by pressing enter 
 $("#task-input").keypress(function (e) { 
     if(e.key === "Enter"){
@@ -41,7 +39,8 @@ function addTodo(todo){
     // create list item
     let item = document.createElement("li");
     item.classList.add("list-group-item");
-    item.innerHTML = `${todo}<span class="delete float-end">X</span>`
+    item.classList.add("list-item-dark");
+    item.innerHTML = `${todo}<span class="delete float-end">X</span><i class="fa-solid fa-chevron-up float-end mx-1 px-1"></i>`
     //add item as a last child of ul.
     $("ul").append(item);
     // clear input value
@@ -49,15 +48,15 @@ function addTodo(todo){
     // delete(X) event listener
     item.querySelector(".delete").addEventListener("click",(event)=>deleteNode(event.target));
     // move the dblclicked item to the top 
-    item.addEventListener("dblclick",moveUp);
+    item.querySelector(".fa-chevron-up").addEventListener("click",moveUp);
     // check todos for display of btn
     checkDeleteAllBtn()
-   
 }
 
 function deleteNode(node){
     // get and assign the text content of list item, slice x from textContent
     let text = node.parentNode.textContent.slice(0,-1); 
+    console.log(text);
     //delete item from array
     todos.splice(todos.indexOf(text),1);
     // remove item's parent('li') from html
@@ -158,11 +157,19 @@ moonIcon.click(function(){
         $(".container").css("color", "white");
         $("body").css("background-color","rgb(34, 31, 31)");
         moonIcon.css("color","white");
+        $("li").addClass("list-item-dark");
+        $(".fa-github").css("color","white");
+        $(".fa-y").css("color","white");
+        
     } else{
         $(".container").css("background-color", "#eceaea");
         $(".container").css("color", "black");
         $("body").css("background-color","white");
         moonIcon.css("color","black");
+        $("li").removeClass("list-item-dark");
+        $(".fa-github").css("color","black");
+        $(".fa-y").css("color","black");
+        
     }
 })
 
@@ -171,8 +178,8 @@ moonIcon.click(function(){
 
 function moveUp(e){
    
-    $("ul").prepend(e.target);
-    let text = e.target.textContent.slice(0,-1);
+    $("ul").prepend(e.target.parentNode);
+    let text = e.target.parentNode.textContent.slice(0,-1);
     shiftTodos(todos.indexOf(text));
 
 }
