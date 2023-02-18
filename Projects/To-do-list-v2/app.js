@@ -40,7 +40,7 @@ function addTodo(todo){
     let item = document.createElement("li");
     item.classList.add("list-group-item");
     item.classList.add("list-item-dark");
-    item.innerHTML = `${todo}<span class="delete float-end">X</span><i class="fa-solid fa-chevron-up float-end mx-1 px-1"></i>`
+    item.innerHTML = `${todo}<span class="delete float-end">X</span><i title="move up" class="fa-solid fa-chevron-up float-end mx-1 px-1"></i>`
     //add item as a last child of ul.
     $("ul").append(item);
     // clear input value
