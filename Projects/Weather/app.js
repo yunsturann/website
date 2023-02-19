@@ -1,5 +1,5 @@
 let weather = { 
-    userId: "5e5043bc8f879449a103c97e8d452e5b",
+    userId: "bc8f879449a103c97e8d",
     city: "",
     temp: "",
     icon: "",
@@ -37,7 +37,7 @@ function submitCity(){
 function setWeather(city){
     // set city, then get values from API with respect to the city.
     weather.city = city;
-    const url ="https://api.openweathermap.org/data/2.5/weather?q=" + weather.city + "&appid="+ weather.userId +"&units=metric";
+    const url ="https://api.openweathermap.org/data/2.5/weather?q=" + weather.city + "&appid=5e5043"+ weather.userId +"452e5b&units=metric";
     fetch(url).then(res=>{
         if(res.ok){
             return res.json();
