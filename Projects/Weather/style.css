@@ -8,6 +8,9 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background: #222;
     background-image: url('https://source.unsplash.com/1600x900/?landscape');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
     font-size: 120%;
 }
 
@@ -19,4 +22,13 @@ body {
     width: 100%;
     max-width: 420px;
     margin: 1em;
+}
+
+#search-input{
+    font-size: 18px;
+    padding-top: 0.5rem;
+}
+
+.form-check{
+    font-size: 1rem;
 }
