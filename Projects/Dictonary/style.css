@@ -9,6 +9,34 @@ header{
     background-color: white;
 }
 
+/* Nav section */
+.nav-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+@media screen and (max-width:1020px) {
+    .nav-section{
+        justify-content: center;
+    }
+    .left-section{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .search-input{
+        width: 100% !important;
+        margin:8px 0;
+    }
+    .right-section{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
 .cards{
     background-color: white;
    
@@ -20,5 +48,15 @@ header{
 
 #saved-section{
     display:none;
+}
+
+.fa-filter:hover{
+    color:red;
+    cursor:pointer;
+}
+
+#filter-section{
+    background-color: #f5f5f5;
+    display: none;
 }
 

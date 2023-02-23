@@ -21,12 +21,10 @@ function searchWord(){
         return response.json();
     }).then(function(res){
         
-        //console.log(res);
-        
         // clear cards
         $(".card-row").html("");
 
-        // add card
+        // add and show found cards  
         for(let i = 0;i<res[0].meanings.length;i++){
             let card ={
                 title: res[0].word,
@@ -34,11 +32,10 @@ function searchWord(){
                 text: res[0].meanings[i].definitions[0].definition
             };
             appendCard(card,".card-row","save");
-            
         }
 
         // save card
-        $(".save-card").click(function(e){
+        $(".save-card").off("click").on("click",function(e){
             let item = {
                title: e.target.parentNode.children[0].textContent,
                subtitle: e.target.parentNode.children[1].textContent,
@@ -46,30 +43,29 @@ function searchWord(){
             }
             words.push(item);
             updateLocalStorage();
-            
-        })
+        });
      
 
     }).catch((err)=>{
         alert(err);
-    })
+    });
 }
 
 function appendCard(card,parent,type){
     $(parent).append(`
-                <div class="col">
+                <div class="col col-card">
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">${card.title}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${card.subtitle}</h6>
                             <p class="card-text">${card.text}</p>
                             <button class="${type}-card btn btn-outline-primary">${type}</button>                         
-                        </div>
+                        </div>  
                     </div>
                 </div>`);
 }
 
-// saved-cards
+// saved-cards-btn
 
 $("#btn-saved-words").click(()=>{
     if(!onSearch){
@@ -77,12 +73,13 @@ $("#btn-saved-words").click(()=>{
         $("#search-section").show();
         $("#saved-section").hide();
         $(".saved-cards").html("");
-        $(".search-input").show();
+        $(".search-input").css("visibility","visible");
+
         onSearch = true;
         return;
     }
 
-    $(".search-input").hide();
+    $(".search-input").css("visibility","hidden");
     $("#search-section").hide();
     $("#saved-section").show();
     $("#btn-saved-words").text("Go to search");
@@ -93,42 +90,100 @@ $("#btn-saved-words").click(()=>{
     });
 
     //delete card
-    $(".delete-card").click((e)=>{
-        let item = {
-            title: e.target.parentNode.children[0].textContent,
-            subtitle: e.target.parentNode.children[1].textContent,
-            text: e.target.parentNode.children[2].textContent
-        }
-        
-        //delete card from array that holds cards
-        for(let i = 0;i<words.length;i++){
-            // stringify to compare objects
-            if(JSON.stringify(words[i]) === JSON.stringify(item)){ // 
-                console.log("Found");
-                words.splice(i,1);
-                break;
-            }
-        }
-        // delete from html
-        e.target.parentNode.parentNode.parentNode.remove();
-        // update storage 
-        updateLocalStorage();
-    })
+    $(".delete-card").off("click").on("click",deleteNode);
+
+    // filter icon and section
+    $(".fa-filter").off("click").on("click",function(){
+        $("#filter-section").slideToggle();
+    });
 
 });
 
+//deletion function
+function deleteNode(e){
+    let item = {
+        title: e.target.parentNode.children[0].textContent,
+        subtitle: e.target.parentNode.children[1].textContent,
+        text: e.target.parentNode.children[2].textContent
+    }
+    
+    //delete card from array that holds cards
+    for(let i = 0;i<words.length;i++){
+        // stringify to compare objects
+        if(JSON.stringify(words[i]) === JSON.stringify(item)){ // 
+            console.log("Found");
+            words.splice(i,1);
+            break;
+        }
+    }
+    // delete from html
+    e.target.parentNode.parentNode.parentNode.remove();
+    // update storage 
+    updateLocalStorage();  
+}
+
+// sort
+$("#btn-sort").click(()=>{
+/*
+    console.log($("#btn-sort").text())
+    if($("#btn-sort").text() === "Unsorted Cards"){
+        $("#btn-sort").text("Sort Cards");
+    }
+    $("#btn-sort").text("Unsorted Cards");
+*/
+    let sortedWords = sort();
+    $(".saved-cards").html("");
+    sortedWords.forEach((card)=>{
+        appendCard(card,".saved-cards","delete");
+    });
+
+    //click event to delete card
+    $(".delete-card").off("click").on("click",deleteNode);
+});
 
 
-// storage part
+$(".form-select").on("change",function(e){
+    let value = e.target.value.toLowerCase();
+    if(value === "1"){
+        $(".col-card").css("display","block");
+        return;
+    }
+    let allCards = document.querySelectorAll(".col-card");
+    for(let i = 0; i<allCards.length;i++){
+        if(allCards[i].firstElementChild.firstElementChild.firstElementChild.textContent[0] === value){
+            allCards[i].style.display ="block";
+        }else{
+            allCards[i].style.display ="none";
+        }
+    }   
+})
+
+//create and return a sorted new array.
+function sort(){
+    let sortedWords = [...words];
+    sortedWords.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+    return sortedWords;
+}
+
+
+// document ready part includes loading and adding options
 $(document).ready(function () {
     if(localStorage.getItem("savedWords") === null){
         words = [];
     }
     else{
-        words = JSON.parse(localStorage.getItem("savedWords"));
+        words = JSON.parse(localStorage.getItem("savedWords"));   
     }
+    // add options when it is ready
+    // Using for loop for (A-Z):
+    for (let i = 65; i <= 90; i++) {
+        $(".form-select").append(`<option value="${String.fromCharCode(i)}">${String.fromCharCode(i)}</option>`);
+    }
+    
 });
 
+// storage part
 function updateLocalStorage(){
     localStorage.setItem("savedWords",JSON.stringify(words));
 }
+
