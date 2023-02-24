@@ -10,6 +10,7 @@ $("#word-input").keypress((e)=>{
     }
 })
 
+// get item from API and evalutate and append it 
 function searchWord(){
    
     let word = $("#word-input").val();
@@ -34,22 +35,23 @@ function searchWord(){
             appendCard(card,".card-row","save");
         }
 
-        // save card
-        $(".save-card").off("click").on("click",function(e){
-            let item = {
-               title: e.target.parentNode.children[0].textContent,
-               subtitle: e.target.parentNode.children[1].textContent,
-               text: e.target.parentNode.children[2].textContent
-            }
-            words.push(item);
-            updateLocalStorage();
-        });
-     
-
     }).catch((err)=>{
         alert(err);
     });
 }
+
+// add triggered item into array and update local storage
+function addCard(e){
+    let item = {
+        title: e.target.parentNode.children[0].textContent,
+        subtitle: e.target.parentNode.children[1].textContent,
+        text: e.target.parentNode.children[2].textContent
+    }
+    words.push(item);
+    updateLocalStorage();
+    appendCard(item,".saved-cards","delete");
+}
+
 
 function appendCard(card,parent,type){
     $(parent).append(`
@@ -63,6 +65,15 @@ function appendCard(card,parent,type){
                         </div>  
                     </div>
                 </div>`);
+
+    if(type === "save"){
+        //click event to btn-save to save card
+        $(".save-card").off("click").on("click",addCard);
+    }
+    else if(type === "delete"){
+        //click event to delete card
+        $(".delete-card").off("click").on("click",deleteNode);
+    }
 }
 
 // saved-cards-btn
@@ -72,9 +83,7 @@ $("#btn-saved-words").click(()=>{
         $("#btn-saved-words").text("Go to saved cards");
         $("#search-section").show();
         $("#saved-section").hide();
-        $(".saved-cards").html("");
         $(".search-input").css("visibility","visible");
-
         onSearch = true;
         return;
     }
@@ -85,9 +94,9 @@ $("#btn-saved-words").click(()=>{
     $("#btn-saved-words").text("Go to search");
 
     onSearch = false;
-    words.forEach(function(card){
+    /*words.forEach(function(card){
         appendCard(card,".saved-cards","delete");
-    });
+    });*/
 
     //delete card
     $(".delete-card").off("click").on("click",deleteNode);
@@ -124,21 +133,24 @@ function deleteNode(e){
 
 // sort
 $("#btn-sort").click(()=>{
-/*
-    console.log($("#btn-sort").text())
+
     if($("#btn-sort").text() === "Unsorted Cards"){
         $("#btn-sort").text("Sort Cards");
+        $(".saved-cards").html("");
+        words.forEach((card)=>{
+            appendCard(card,".saved-cards","delete");
+        })
+        return;
     }
+
     $("#btn-sort").text("Unsorted Cards");
-*/
     let sortedWords = sort();
     $(".saved-cards").html("");
     sortedWords.forEach((card)=>{
         appendCard(card,".saved-cards","delete");
     });
 
-    //click event to delete card
-    $(".delete-card").off("click").on("click",deleteNode);
+    
 });
 
 
@@ -172,7 +184,10 @@ $(document).ready(function () {
         words = [];
     }
     else{
-        words = JSON.parse(localStorage.getItem("savedWords"));   
+        words = JSON.parse(localStorage.getItem("savedWords"));
+        words.forEach(function(card){
+            appendCard(card,".saved-cards","delete");
+        });
     }
     // add options when it is ready
     // Using for loop for (A-Z):
