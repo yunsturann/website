@@ -24,13 +24,13 @@ function searchWord(){
         
         // clear cards
         $(".card-row").html("");
-
         // add and show found cards  
         for(let i = 0;i<res[0].meanings.length;i++){
             let card ={
                 title: res[0].word,
                 subtitle: res[0].meanings[i].partOfSpeech,
-                text: res[0].meanings[i].definitions[0].definition
+                text: res[0].meanings[i].definitions[0].definition,
+                example: res[0].meanings[i].definitions[0].example
             };
             appendCard(card,".card-row","save");
         }
@@ -45,22 +45,35 @@ function addCard(e){
     let item = {
         title: e.target.parentNode.children[0].textContent,
         subtitle: e.target.parentNode.children[1].textContent,
-        text: e.target.parentNode.children[2].textContent
+        text: e.target.parentNode.children[2].textContent,
+        example: e.target.parentNode.children[3].textContent
     }
     words.push(item);
     updateLocalStorage();
     appendCard(item,".saved-cards","delete");
+    // show card saved
+    e.target.textContent = "saved succesfully";
+    setTimeout(function(){
+        e.target.textContent = "save";
+    },1000);
 }
 
 
 function appendCard(card,parent,type){
+    // prevent undefined objects, make its display none 
+    let display = "";
+    if(card.example === undefined || card.example === "undefined" ){
+        display = "d-none";
+    }
+    //append
     $(parent).append(`
                 <div class="col col-card">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="card-title">${card.title}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">${card.subtitle}</h6>
-                            <p class="card-text">${card.text}</p>
+                            <h5 class="card-title" title="word">${card.title}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" title="part of speech">${card.subtitle}</h6>
+                            <p class="card-text" title="meaning">${card.text}</p>
+                            <p class="card-example ${display}" title="example">${card.example}</p>
                             <button class="${type}-card btn btn-outline-primary">${type}</button>                         
                         </div>  
                     </div>
@@ -94,9 +107,6 @@ $("#btn-saved-words").click(()=>{
     $("#btn-saved-words").text("Go to search");
 
     onSearch = false;
-    /*words.forEach(function(card){
-        appendCard(card,".saved-cards","delete");
-    });*/
 
     //delete card
     $(".delete-card").off("click").on("click",deleteNode);
@@ -105,30 +115,37 @@ $("#btn-saved-words").click(()=>{
     $(".fa-filter").off("click").on("click",function(){
         $("#filter-section").slideToggle();
     });
-
+    
+  
 });
 
 //deletion function
 function deleteNode(e){
+   
     let item = {
         title: e.target.parentNode.children[0].textContent,
         subtitle: e.target.parentNode.children[1].textContent,
-        text: e.target.parentNode.children[2].textContent
+        text: e.target.parentNode.children[2].textContent,
+        example: e.target.parentNode.children[3].textContent
     }
     
     //delete card from array that holds cards
     for(let i = 0;i<words.length;i++){
         // stringify to compare objects
-        if(JSON.stringify(words[i]) === JSON.stringify(item)){ // 
-            console.log("Found");
+        if(JSON.stringify(words[i]) === JSON.stringify(item)){
             words.splice(i,1);
             break;
         }
     }
     // delete from html
-    e.target.parentNode.parentNode.parentNode.remove();
+    e.target.textContent = "Deleting...";
+    setTimeout(()=>{
+        e.target.parentNode.parentNode.parentNode.remove();
+    },1000)
+    
     // update storage 
-    updateLocalStorage();  
+    updateLocalStorage();
+
 }
 
 // sort
