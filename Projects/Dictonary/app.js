@@ -12,7 +12,7 @@ $("#word-input").keypress((e)=>{
 
 // get item from API and evalutate and append it 
 function searchWord(){
-   
+    
     let word = $("#word-input").val();
     let url = "https://api.dictionaryapi.dev/api/v2/entries/en/"+ word;
     fetch(url).then(function(response){
@@ -21,7 +21,10 @@ function searchWord(){
         }
         return response.json();
     }).then(function(res){
-        
+        // show search, hide saved cards
+        $("#search-section").show();
+        $("#saved-section").hide();
+
         // clear cards
         $(".card-row").html("");
         // add and show found cards  
@@ -167,7 +170,6 @@ $("#btn-sort").click(()=>{
         appendCard(card,".saved-cards","delete");
     });
 
-    
 });
 
 

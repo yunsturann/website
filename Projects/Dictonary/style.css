@@ -46,9 +46,10 @@ header{
     background-color: whitesmoke;
 }
 
-#saved-section{
+#search-section{
     display:none;
 }
+
 
 .fa-filter:hover{
     color:red;

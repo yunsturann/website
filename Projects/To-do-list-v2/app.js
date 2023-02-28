@@ -74,7 +74,7 @@ deleteAllBtn.click(deleteAll);
 
 function deleteAll(){
 
-    if(prompt("Are you sure to delete all tasks?","Click Buttons to apply or not!") === null) return;
+    if(confirm("Are you sure to delete all tasks?") === false) return;
     
     // select all Li and remove
     $("li").remove();
