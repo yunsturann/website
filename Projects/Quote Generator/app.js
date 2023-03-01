@@ -25,12 +25,12 @@ let quoteGenerator = {
 $("#submit").click(()=>{
     quoteGenerator.fetchData(quoteGenerator.url);
 });
-
+// copy event to the clipboard
 $("#copy").click(()=>{
     navigator.clipboard.writeText(quoteGenerator.quote);
     Alert("Quote Copied!");
 });
-
+// save the quote
 $("#save").click((e)=>{
     let item ={
         quote: quoteGenerator.quote,
@@ -40,7 +40,7 @@ $("#save").click((e)=>{
     localStorage.setItem("quotes",JSON.stringify(quoteGenerator.savedQuotes));
     Alert("Saved succesfully!");
 });
-
+// show alert when invoked
 function Alert(text){
     $(".container").append("<p class='message'>"+text+"</p>");
     setTimeout(()=>{

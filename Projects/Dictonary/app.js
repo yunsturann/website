@@ -207,6 +207,7 @@ $(document).ready(function () {
         words.forEach(function(card){
             appendCard(card,".saved-cards","delete");
         });
+        
     }
     // add options when it is ready
     // Using for loop for (A-Z):

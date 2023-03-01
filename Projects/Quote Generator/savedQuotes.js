@@ -10,7 +10,7 @@ $(function () {
 });
 
 function addQuotes(item){
-    
+    // append card holds the quote and author
     $(".cards").append(`
         <div class="col">
             <div class="card h-100">
@@ -31,22 +31,32 @@ function addQuotes(item){
     
     // delete event
     $(".delete").off("click").on("click",(event)=>{
-
+        // adjust displays
         event.target.style.display = "none";
         event.target.parentNode.children[1].style.display ="flex";
         
-        $(".btn-success").one("click",(e)=>{
-            console.log(e.target.parentNode.parentNode.parentNode.parentNode.parentNode);
-           //event.target.parentNode.parentNode.parentNode.remove();
+        $(".btn-success").off("click").on("click",(e)=>{
+            // select body node
+            let cardBody = e.currentTarget.parentNode.parentNode.parentNode.firstElementChild;
+            let item ={ // create object that approved to delete
+                quote:cardBody.firstElementChild.textContent,
+                author: cardBody.lastElementChild.textContent
+            };
+            // delete from array
+            for(let i = 0;i<quotes.length;i++){
+                if(JSON.stringify(quotes[i]) === JSON.stringify(item)){
+                    quotes.splice(i,1);
+                }
+            }
+            //delete node
+            e.currentTarget.parentNode.parentNode.parentNode.parentNode.remove();
+            //update storage
+            localStorage.setItem("quotes",JSON.stringify(quotes));
         });
 
         $(".btn-danger").off("click").on("click",(e)=>{
-            console.log(e.target);
-           
-           // e.target.parentNode.parentNode.children[0].style.display= "inline-block";
-           // e.target.parentNode.parentNode.children[1].style.display ="none";
-           //event.target.parentNode.children[1].style.display ="none";
-            //event.target.style.display = "inline-block";
+            e.currentTarget.parentNode.parentNode.children[0].style.display= "inline-block";
+            e.currentTarget.parentNode.parentNode.children[1].style.display ="none";
         });
 
     });
