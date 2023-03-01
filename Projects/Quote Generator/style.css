@@ -1,0 +1,101 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(205, 99, 117);
+}
+
+.container{
+    background-color: rgb(233, 207, 211);
+    width: 900px;
+    padding:2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap:1.2rem;
+    border-radius: 42px;
+}
+
+header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a{
+    color: #212529;
+}
+header a:hover{
+    opacity:0.7;
+}
+
+
+#quote{
+    font-size: 1.3rem;
+    font-style:italic;
+}
+
+#author{
+    font-size:1.5rem;
+
+}
+
+#submit{
+    padding:0.5rem 2rem;
+}
+
+.content{
+    font-family: 'Times New Roman', Times, serif;
+    width: 80%;
+    border-color: rgb(220, 121, 138) !important;
+    padding:2rem 1rem 0.5rem;
+    border-radius: 15px 0;
+    position: relative;
+}
+
+.icons{
+    display:none;
+    position: absolute;
+    top:2px;
+    right: 6px;
+    font-size: 1.5rem;
+    color:rgb(220, 121, 138);
+    
+}
+
+.icons i:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+#save{
+    margin-left:0.5rem;
+}
+#copy{
+    margin-left:0.5rem;
+}
+
+.message{
+    border-radius: 12px;
+    padding: 0.4rem;
+    width: 80%;
+    background-color: rgb(151, 198, 216);
+}
+
+
+/*saved section*/
+
+.cards{
+    max-height: 500px;
+    overflow: auto;
+}
+
+.approval{
+    display: none;
+    gap:1.5rem;
+    justify-content: center;
+
+}
