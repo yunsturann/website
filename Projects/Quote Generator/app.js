@@ -1,3 +1,7 @@
+
+// to prevent saving the same quote
+let saveRepeat = false; 
+
 let quoteGenerator = {
     savedQuotes: [],
     author:"",
@@ -13,6 +17,7 @@ let quoteGenerator = {
         });
     },
     displayData: (data)=>{
+        saveRepeat = false;
         quoteGenerator.author = data.author
         quoteGenerator.quote = data.content;
         $("#quote").text("“"+quoteGenerator.quote+"”");
@@ -32,6 +37,11 @@ $("#copy").click(()=>{
 });
 // save the quote
 $("#save").click((e)=>{
+    if(saveRepeat === true){
+        Alert("The quote is already saved!");
+        return;
+    }
+    saveRepeat = true;
     let item ={
         quote: quoteGenerator.quote,
         author: quoteGenerator.author

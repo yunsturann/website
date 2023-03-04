@@ -99,3 +99,16 @@ header a:hover{
     justify-content: center;
 
 }
+
+.card{
+    background-color: rgb(225, 225, 225,0.6);;
+}
+
+.card-body .float-end{
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.card-footer{
+    opacity: 0.8;
+}
