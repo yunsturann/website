@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1 id="heading" class="p-1">Quiz App</h1>
+        <div class="sub-header">
+            <p id="progress">Question <span id="question-number">0</span> of <span id="number-all">y</span></p>
+            <button id="btn-start" type="submit" class="btn btn-primary px-4">Start</button>
+            <p id="count-down" class="bg-warning">00:00:00</p>
+        </div>
+
+        <hr>
+
+        <p id="question">Question 0</p>
+
+        <hr>
+
+        <div id="options">
+            <button id="btn1" class="btn btn-outline-secondary option">A. <span class="content"></span></button>
+            <button id="btn2" class="btn btn-outline-secondary option">B. <span class="content"></span></button>
+            <button id="btn3" class="btn btn-outline-secondary option" >C. <span class="content"></span></button>
+            <button id="btn4" class="btn btn-outline-secondary option">D. <span class="content"></span></button>
+        </div>
+        
+        <p id="score">0 score</p>
+        <hr>
+
+        <footer>
+            <p>~Yunus Turan</p>
+        </footer>
+
+        <p id="message" class="bg-danger"></p>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
