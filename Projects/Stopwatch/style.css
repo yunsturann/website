@@ -1,26 +1,33 @@
-
+*{
+    margin:0;
+    padding:0;
+}
 body{
+    background-color: #475151;
     display: flex;
-    height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: rgb(45, 43, 43,.9);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100vh;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container{
     height:400px;
     width: 400px;
-    background-color: rgb(109, 174, 153,.5);
+    background-color: #CBE4DE;
     border-radius: 34px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+    padding:1rem;
     
 }
 
 #heading{
-    color:black;
+    color:rgb(0, 0, 0);
+    font-size: 40px;
+   
 }
 
 #time{
@@ -29,15 +36,25 @@ body{
 
 .buttons{
     display: flex;
-    gap:1.7rem;
+    gap:2rem;
 }
 
 .buttons img{
     height: 60px;
-    width: 60px;
     cursor:pointer;
 }
 
 .buttons img:hover{
     opacity: 0.7;
+}
+
+@media screen and (max-width: 400px) {
+    .container{
+        height:300px;
+        width: 300px;
+    }
+    #time{
+        font-size: 50px;
+    }
+    
 }

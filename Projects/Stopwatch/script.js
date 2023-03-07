@@ -1,6 +1,7 @@
 // variables
 let [seconds, minutes, hours] = [0,0,0];
 let timer = null;
+let started = false;
 
 // DOMS
 const timeDOM = document.getElementById("time");
@@ -33,22 +34,26 @@ function setWatch(){
 }
 
 function watchStart(){
-    // if interval is alredy running, clear it first not to add new interval
-    if(timer != null){
-        clearInterval(timer);
-    }
-    // just add an interval to reach more correct result!
+    if(started) return;
+    started = true;
+   
+    // just add an interval
     timer = setInterval(setWatch,1000);
+    timeDOM.style.color = "green";
 }
 
 function watchStop(){
+    started = false;
     // clear interval to stop incrementing 
     clearInterval(timer);
+    timeDOM.style.color = "red";
 }
 
 function watchReset(){
+    started = false;
     // clear timer and set values to the default which is 0!
     clearInterval(timer);
     [seconds,minutes,hours] = [0,0,0];
     timeDOM.textContent = "00:00:00";
+    timeDOM.style.color = "rgb(0, 0, 0)";
 }
