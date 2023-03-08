@@ -1,0 +1,117 @@
+
+body{
+    background-color: skyblue;
+    display: flex;
+    justify-content: center;
+    padding:3rem;
+
+}
+
+.container{
+    background-color: white;
+    width: 600px;
+}
+
+#heading{
+    padding:1rem;
+    text-align: center;
+}
+
+.input-section{
+    margin:1rem 0;
+    text-align: center;
+}
+
+input[type="number"]{
+    width: 120px;
+    outline: none;
+    border:1px solid skyblue;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+#submit-el{
+    display: block;
+    margin:1rem auto;
+
+}
+
+.list{
+    list-style: none;
+    padding: 1rem;
+    max-height:400px;
+    overflow: auto;
+}
+
+.item{
+    padding: 4px 0;
+    border-bottom:2px solid rgb(0,0,0,0.5) ;
+    margin-top:10px;
+    display:flex;
+    justify-content: space-between;
+   
+}
+
+.text-clock{
+    margin:0;
+    padding: 0;
+    font-size:20px;
+}
+
+input[role="switch"]{
+    cursor: pointer;
+}
+
+input[role="switch"]:hover{
+    opacity: 0.7;
+}
+
+.fa-trash{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.fa-trash:hover{
+    opacity: 0.7;
+    color:#ff0000;
+}
+
+
+
+@media screen and (max-width:600px) {
+    body{
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width:450px) {
+    body{
+        padding: 1rem;
+    }
+
+    .container{
+        padding:4px !important;
+    }
+}
+
+/*Scrool bar*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
