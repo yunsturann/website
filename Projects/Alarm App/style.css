@@ -40,7 +40,7 @@ input[type="number"]{
     list-style: none;
     padding: 1rem;
     max-height:400px;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .item{
@@ -49,13 +49,14 @@ input[type="number"]{
     margin-top:10px;
     display:flex;
     justify-content: space-between;
-   
+    flex-wrap: wrap;
 }
 
 .text-clock{
     margin:0;
     padding: 0;
-    font-size:20px;
+    font-size:24px;
+  
 }
 
 input[role="switch"]{
@@ -66,15 +67,32 @@ input[role="switch"]:hover{
     opacity: 0.7;
 }
 
-.fa-trash{
+.item i{
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-.fa-trash:hover{
+.item i:hover{
     opacity: 0.7;
     color:#ff0000;
 }
+
+
+
+.down-content{
+    background-color: #f2f2f2;
+    width: 100%;
+    padding:6px 1rem 0;
+    display: none;
+}
+
+.remaning-time{
+    text-align: center;
+    font-style: italic;
+    opacity: 0.8;
+  
+}
+
 
 
 
