@@ -1,10 +1,17 @@
 
 let activeAlarms = new Set();
-let allAlarms = [];
+let alarms = new Map();
+
 
 const hInput = $("#hours-input");
 const mInput = $("#minutes-input");
 const listEl = $(".list");
+
+/*
+let timer = setInterval(()=>{
+    console.log(timer); 
+},1000);
+*/
 
 
 $("#submit-el").click(createAlarmItem);
@@ -30,7 +37,8 @@ function createAlarmItem(e){
   
     let alarmItem = {
         textClock: `${h}:${m}`,
-        id: generateUniqueId()
+        id: generateUniqueId(),
+        timer:null
     }
 
     for(let x of allClocks){
@@ -40,7 +48,10 @@ function createAlarmItem(e){
         }
     }
 
+    alarms.set(alarmItem.id,alarmItem);
+
     addAlarmItem(alarmItem);
+  
 
 }
 
@@ -71,7 +82,7 @@ function addAlarmItem(alarmItem){
     item.querySelector(".fa-trash").addEventListener("click",deleteListItem);
     item.querySelector(".fa-chevron-down").addEventListener("click",toggleDropDown);
     
-    
+   // calculateRemaningTime(alarmItem.id);
 }
 
 function setAlarm(e){
@@ -91,9 +102,15 @@ function deleteListItem(e){
         return;
     }
   
+    let itemId = parseInt(e.target.parentNode.parentNode.id);
+    console.log(itemId);
     let textClock = e.target.parentNode.parentNode.firstElementChild.textContent;
 
+    updateRemaningTime(itemId,"clear");
+
     activeAlarms.delete(textClock);
+    alarms.delete(itemId);
+    
 
     e.target.parentNode.parentNode.remove();
 }
@@ -127,30 +144,72 @@ function playVoice(path){
 }
 
 function toggleDropDown(e){
-    let id = e.target.parentNode.parentNode.id;
-    $(`#${id} .down-content`).slideToggle();
+    let id = parseInt(e.target.parentNode.parentNode.id);
+    const dropDown =  $(`#${id} .down-content`);
+
+    if(dropDown.css('display') == 'none'){ 
+        dropDown.slideDown('slow'); 
+        updateRemaningTime(id,"set");
+    } else { 
+        dropDown.slideUp('slow'); 
+        updateRemaningTime(id,"clear");
+    }
+
+    
+}
+
+function updateRemaningTime(id,type){
+
+    for (const x of alarms.values()) {
+        if(x.id == id){
+            if(type === "set"){
+                calculateRemaningTime(x.id);
+                x.timer = setInterval(()=>{calculateRemaningTime(x.id)},60000);
+            }else{
+                clearInterval(x.timer);
+                x.timer = null; 
+            }
+            break;
+        }
+
+    }
+
 
 }
-/*
+
 function calculateRemaningTime(id){
+    console.log("Runs");
     let alarmText = $(`#${id} .text-clock`).text();
     let alarmH = parseInt(alarmText.substring(0,2));
     let alarmM = parseInt(alarmText.substring(3,5));
+    let endMinutes = (alarmH*60) + alarmM 
     console.log(alarmH,alarmM);
     let currTime = new Date();
     let h = currTime.getHours();
     let m = currTime.getMinutes();
     console.log(h, m);
-    let remaning = "";
-    if(h < alarmH){
-        let hours = alarmH-h;
+    let startMinutes = (h*60) + m;
+    let remaningMinutes = endMinutes - startMinutes;
+    
+    if(remaningMinutes < 0 ){
+        remaningMinutes += (24*60);
     }
-}*/
+    h = Math.floor(remaningMinutes / 60);
+    m = remaningMinutes % 60;
+    console.log(h,m);
+
+    h = h < 10 ? "0" + h : h;
+    m = m < 10 ? "0" + m : m; 
+
+    $(`#${id} .remaning-time`).text(`${h}:${m} left!`);
+
+}
 
 function generateUniqueId(){
     let random = Math.floor(Math.random()*10000);
-    for(let i = 0;i<allAlarms.length;i++){
-        if(allAlarms[i].id == random){
+
+    for (const x of alarms.values()) {
+        if(x.id === random){
             return generateUniqueId();
         }
     }
