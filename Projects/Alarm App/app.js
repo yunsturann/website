@@ -75,7 +75,7 @@ function addAlarmItem(alarmItem){
             </div>
             <div class="down-content">
                 <div class="input-group mb-1">
-                    <input type="text" class="form-control alarm-label" placeholder="Label" disabled>
+                    <input type="text" class="form-control alarm-label" placeholder="dblclick to change label" disabled>
                     <button class="btn btn-outline-primary save-label" type="button">save</button>
                 </div>
                 <p class="remaning-time"></p>

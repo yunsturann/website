@@ -8,16 +8,18 @@ let clickable = false;
 let level = 0;
 let speed = 1000;
 
-$(document).on("keypress",function(){
+$(document).on("keypress",startGame);
+$(document).on("dblclick",startGame);
+
+function startGame(){
     if(started){           // if game isn't started doesnt allow clicking
        return;
     }else{
         started = true;
-       
         $("body").removeClass("game-over");
         playGame();
     }
-})
+}
 
 $(".btn").click(function(){
     if(!clickable){                               // if clicking is not available dont allow.
