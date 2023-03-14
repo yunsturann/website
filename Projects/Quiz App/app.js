@@ -1,130 +1,167 @@
-// confusing line of codes
-// can be writen so better
-// no comments
-// will be coded better
 
-const questions = [
-    {
-        question: "What is the biggest sport clup in Turkey ?",
-        options:["Trabzonspor","Fenerbahçe","Beşiktaş","Galatasaray"],
-        answer:"Fenerbahçe"
-    },
-    {
-        question: "Most beautiful city in Turkey ?",
-        options:["Eskisehir","Düzce","Ankara","İzmir"],
-        answer:"Eskisehir"
-    },
-    {
-        question: "What is the capital of Turkey ?",
-        options:["İstanbul","Ankara","İzmir","Antalya"],
-        answer:"Ankara"
-    },
-    {
-        question: "Who is the richest person ?",
-        options:["Ali Koc","Elon Musk","Kiliclaroglu","Erdogan"],
-        answer:"Elon Musk"
-    },
-    {
-        question: "Which country has the most population?",
-        options:["France","India","Brazil","China"],
-        answer:"China"
-    }
-];
-
+let data;
+let quizApp;
+let time;
+let nOfQuestions;
 let index = 0;
-let clickable = false;
+let timer;
+let started = false;
+let score = 0;
+let correctIndex;
 
-const startBtn = document.getElementById("btn-start");
-const question = document.getElementById("question");
-const questionNumber = document.getElementById("question-number");
-const options = document.getElementById("options");
-const contents = document.querySelectorAll(".content");
-const score = document.getElementById("score");
-const optionAll = document.querySelectorAll(".option");
-const message = document.getElementById("message");
 
-startBtn.addEventListener("click",startQuiz);
+/*Click event to the options */
 
-document.getElementById("number-all").textContent = questions.length;
+$(".option").click((e)=>{
+   
 
-for(let i = 0; i<optionAll.length;i++){
-    optionAll[i].addEventListener("click",selectOption);
+    if(!started){
+        return;
+    }
+
+    if(data[index].correctAnswer === e.currentTarget.firstElementChild.textContent){
+        score++;
+        $("#score").text(score+" score");
+    }else{
+        e.currentTarget.classList.add("bg-danger");
+    }
+
+    $(`#btn${correctIndex}`).addClass("bg-success");
+
+    started = false;
+    index++;
+
+    if(index === nOfQuestions){
+        alert("Quiz is done!");
+        return;
+    }
+
+    myAlert("Next question is coming...",2000);
+    setTimeout(()=>clearOptionColors(e),2000);
+
+    setTimeout(nextQuestion,2000);
+
+
+    console.log(e.currentTarget.firstElementChild.textContent);
+    console.log(score+"  index:"+index)
+
+
+});
+
+function clearOptionColors(e){
+    e.currentTarget.classList.remove("bg-danger");
+    $(`#btn${correctIndex}`).removeClass("bg-success");
+}
+
+
+// document ready
+$(function(){
+    myAlert("Document is ready!", 2000);
+    
+    quizApp = JSON.parse(sessionStorage.getItem("quizApp"));
+
+    nOfQuestions = parseInt(quizApp.numberOfQuestions);
+
+    if(quizApp.difficulty === "Easy"){
+        time = nOfQuestions * 20;
+    }else if(quizApp.difficulty === "Medium"){
+        time = nOfQuestions * 15;
+    }else if(quizApp.difficulty === "Hard"){
+        time = nOfQuestions * 10;
+    }
+    
+    fetchQuestions();
+
+});
+
+function fetchQuestions(){
+    
+    myAlert("Fetching Data",10000);
+
+    const url = `https://the-trivia-api.com/api/questions?limit=${nOfQuestions}&region=TR&difficulty=${quizApp.difficulty.toLowerCase()}`
+    fetch(url)
+    .then((response)=>response.json())
+    .then((res)=>{
+        data = res;
+        myAlert("Fetched Data",1000);
+        console.log(data);
+
+        startQuiz();
+    });
+
 }
 
 
 function startQuiz(){
+    timer = setInterval(setTime,1000);
 
-    for(let i = 0;i<contents.length;i++){
-        contents[i].parentNode.classList.remove("bg-success");
-        contents[i].parentNode.classList.remove("bg-danger");
-    }
+    $("#number-all").text(nOfQuestions);
+    nextQuestion()
 
-    if(startBtn.textContent === "Start again!"){
-        resetQuiz();
-    }
-
-    startBtn.textContent = "Next";
-
-    if(index === questions.length){  
-        return;
-    }
-
-    displayNextQues(questions[index++]);
 }
 
+function nextQuestion(){
 
-function displayNextQues(item){
-    clickable = true;
-    for(let i = 0;i < optionAll.length;i++){
-        optionAll[i].setAttribute("style","cursor:pointer");
-    }
-
-    if(index === questions.length) startBtn.textContent = "Start again!";
+    started = true;
+    ques = data[index];
+    let j = 0;
     
-    questionNumber.textContent = index;
-    question.textContent = item.question;
-    for(let i = 0;i<contents.length;i++){
-        contents[i].textContent = item.options[i];
+    $("#question").text(ques.question);
+    $("#question-number").text(index+1);
+    $("#category").text(ques.category);
+    
+
+    correctIndex = randomNumberGenerator(3);
+
+    let options = document.querySelectorAll(".content");
+
+    for(let i = 0; i<options.length;i++){
+        if(i === correctIndex){
+            options[i].textContent = ques.correctAnswer; 
+        }
+        else{
+            options[i].textContent = ques.incorrectAnswers[j];
+            j++;
+        }
     }
 
 }
 
-function selectOption(e){
-    if(!clickable){
-        myAlert("Start/Go to the Next!",2000);
+
+function setTime(){
+
+    if(!started){
         return;
-    } 
-    clickable = false;
-    for(let i = 0;i < optionAll.length;i++){
-        optionAll[i].setAttribute("style","cursor:default");
     }
 
-    if(questions[index - 1].answer === e.currentTarget.firstElementChild.textContent){
-        e.currentTarget.classList.add("bg-success");
-        score.textContent = parseInt(score.textContent) + 1 + " score";
-    }else{
-        e.currentTarget.classList.add("bg-danger");
+    if(time === 0){
+        alert("Time is up!");
+        $("#count-down").text("No time left");
+        clearInterval(timer);
+        started = false;
+        return;
     }
-        
+
+    time--;
+    $("#count-down").text(`${time} sec left!`);
+    
 }
 
-function resetQuiz(){
 
-    myAlert(`Your score is ${score.textContent}!`,4000);
 
-    setTimeout(()=>{
-        index = 1;
-        score.textContent = "0 score";
-        displayNextQues(questions[0]);
-        startBtn.textContent = "Start"
-    },2000);
-}
-
+/* My alert function creates a pop-up */
 function myAlert(text,duration){
-    message.style.display="block";
-    message.textContent = text;
+    const message = $("#message");
+    message.css("display","block");
+    message.text(text);
     setTimeout(()=>{
-        message.textContent="";
-        message.style.display="none";
+        message.text("");
+        message.css("display","none");
     },duration);
 }
+
+function randomNumberGenerator(upperBound){
+    let random = Math.floor(Math.random()*(upperBound + 1));
+    return random;
+}
+

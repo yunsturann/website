@@ -1,0 +1,26 @@
+
+body{
+    background-color: #FFDD83;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    background-color: #98DFD6;
+    border-radius: 12px;
+    min-height: 500px;
+    width:600px;
+    padding:1rem 3rem;
+    text-align: center;
+
+}
+
+form{
+    padding:1rem 5rem;
+}
+
+.input-size{
+    text-align: left;
+}
