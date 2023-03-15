@@ -24,7 +24,7 @@ function startQuiz(e){
 
     const QuizApp = {
         numberOfQuestions: $("#slider-input").val(),
-        category: $(".category option:selected").text(),
+        category: $(".category option:selected").val(),
         difficulty: $(".difficulty option:selected").text()
     }
 

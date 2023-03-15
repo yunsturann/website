@@ -32,7 +32,7 @@ $(".option").click((e)=>{
     index++;
 
     if(index === nOfQuestions){
-        alert("Quiz is done!");
+        setTimeout(()=>{ alert("Quiz is done!");},1000)
         return;
     }
 
@@ -77,8 +77,12 @@ $(function(){
 function fetchQuestions(){
     
     myAlert("Fetching Data",10000);
-
-    const url = `https://the-trivia-api.com/api/questions?limit=${nOfQuestions}&region=TR&difficulty=${quizApp.difficulty.toLowerCase()}`
+    let category = "";
+    if(quizApp.category != "random"){
+        category = "categories=" + quizApp.category +"&";
+    }
+    const url = `https://the-trivia-api.com/api/questions?${category}limit=${nOfQuestions}&region=TR&difficulty=${quizApp.difficulty.toLowerCase()}`
+    console.log(url);
     fetch(url)
     .then((response)=>response.json())
     .then((res)=>{
