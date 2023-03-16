@@ -2,6 +2,8 @@
 let words = [];
 let onSearch = true;
 
+
+
 $("#submit").click(searchWord);
 
 $("#word-input").keypress((e)=>{
@@ -33,7 +35,8 @@ function searchWord(){
                 title: res[0].word,
                 subtitle: res[0].meanings[i].partOfSpeech,
                 text: res[0].meanings[i].definitions[0].definition,
-                example: res[0].meanings[i].definitions[0].example
+                example: res[0].meanings[i].definitions[0].example,
+                src:res[0].phonetics[0].audio
             };
             appendCard(card,".card-row","save");
         }
@@ -45,11 +48,13 @@ function searchWord(){
 
 // add triggered item into array and update local storage
 function addCard(e){
+   
     let item = {
         title: e.target.parentNode.children[0].textContent,
         subtitle: e.target.parentNode.children[1].textContent,
         text: e.target.parentNode.children[2].textContent,
-        example: e.target.parentNode.children[3].textContent
+        example: e.target.parentNode.children[3].textContent,
+        src:e.target.parentNode.children[4].firstElementChild.src
     }
     words.push(item);
     updateLocalStorage();
@@ -59,6 +64,7 @@ function addCard(e){
     setTimeout(function(){
         e.target.textContent = "save";
     },1000);
+
 }
 
 
@@ -77,7 +83,8 @@ function appendCard(card,parent,type){
                             <h6 class="card-subtitle mb-2 text-muted" title="part of speech">${card.subtitle}</h6>
                             <p class="card-text" title="meaning">${card.text}</p>
                             <p class="card-example ${display}" title="example">${card.example}</p>
-                            <button class="${type}-card btn btn-outline-primary">${type}</button>                         
+                            <audio controls class="w-100"> <source src="${card.src}" type="audio/mpeg"></audio>
+                            <button class="${type}-card btn btn-outline-primary d-block">${type}</button>                         
                         </div>  
                     </div>
                 </div>`);
@@ -124,12 +131,13 @@ $("#btn-saved-words").click(()=>{
 
 //deletion function
 function deleteNode(e){
-   
+
     let item = {
         title: e.target.parentNode.children[0].textContent,
         subtitle: e.target.parentNode.children[1].textContent,
         text: e.target.parentNode.children[2].textContent,
-        example: e.target.parentNode.children[3].textContent
+        example: e.target.parentNode.children[3].textContent,
+        src: e.target.parentNode.children[4].firstElementChild.src
     }
     
     //delete card from array that holds cards

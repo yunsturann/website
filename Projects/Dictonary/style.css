@@ -50,6 +50,10 @@ header{
     display:none;
 }
 
+#saved-section{
+    display:none;
+}
+
 
 .fa-filter:hover{
     color:red;
