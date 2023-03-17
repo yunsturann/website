@@ -18,7 +18,7 @@ hr{
 
 .container{
     background-color: white;
-    height: 600px;
+    min-height: 600px;
     width:700px;
     padding: 1rem 3rem;
     position: relative;
@@ -37,7 +37,7 @@ hr{
 
 #count-down{
     border-radius: 6px;
-    padding:4px 2rem;
+    padding:4px 1rem;
 }
 
 #question{
@@ -68,9 +68,11 @@ footer p{
     padding:6px 1rem;
     border-radius: 4px;
     position: absolute;
-    bottom: 30px;
-    left:150px;
-    width: 400px;
+    bottom:20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 20rem;
     font-weight: bolder;
     text-align: center;
     
