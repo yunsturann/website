@@ -32,7 +32,17 @@ $(".option").click((e)=>{
     index++;
 
     if(index === nOfQuestions){
-        setTimeout(()=>{ alert("Quiz is done!");},1000)
+        setTimeout(()=>{
+             if(confirm("Do you want to restart ?")){
+                window.location.reload();
+             }
+             else{
+                $("footer").after("<button class='btn btn-primary mt-3 returnHomage'> Return Homepage </button>")
+                $(".returnHomage").click(()=> window.location.assign("start.html"));
+             }
+        },1000);
+
+        myAlert("Your Score is " + score +".",10000);
         return;
     }
 
@@ -100,7 +110,7 @@ function startQuiz(){
     timer = setInterval(setTime,1000);
 
     $("#number-all").text(nOfQuestions);
-    nextQuestion()
+    nextQuestion();
 
 }
 
