@@ -35,15 +35,9 @@ $(".option").click((e)=>{
     // if all questions are done, offer two option one of is to restart the same category quiz.
     // another one is adding button below the footer in order to return homepage of the quiz app. 
     if(index === nOfQuestions){
-        setTimeout(()=>{
-             if(confirm("Do you want to restart ?")){
-                window.location.reload();
-             }
-             else{
-                $("footer").after("<button class='btn btn-primary mt-3 returnHomage'> Return Homepage </button>")
-                $(".returnHomage").click(()=> window.location.assign("start.html"));
-             }
-        },1000);
+
+        setTimeout(callPopup,1000);
+
         // show score 5 sec
         myAlert("Your Score is " + score +".",5000);
         return;
@@ -73,11 +67,11 @@ $(function(){
     nOfQuestions = parseInt(quizApp.numberOfQuestions);
 
     if(quizApp.difficulty === "Easy"){
-        time = nOfQuestions * 20;
+        time = nOfQuestions * 12;
     }else if(quizApp.difficulty === "Medium"){
-        time = nOfQuestions * 15;
-    }else if(quizApp.difficulty === "Hard"){
         time = nOfQuestions * 10;
+    }else if(quizApp.difficulty === "Hard"){
+        time = nOfQuestions * 7;
     }
     // call fetching function
     fetchQuestions();
@@ -178,6 +172,7 @@ function setTime(){
         $("#count-down").text("No time left");
         clearInterval(timer);
         started = false;
+        callPopup();
         return;
     }
 
@@ -205,3 +200,29 @@ function randomNumberGenerator(upperBound){
     return random;
 }
 
+/* PopUp events */
+
+$("#restart-quiz").click(()=>{
+    window.location.reload();
+});
+
+$("#homepage-quiz").click(()=>{
+    window.location.assign("start.html");
+});
+
+$("#close-popup").click(()=>{
+    $("#popup").addClass("d-none");
+    $("footer").after("<button class='btn btn-primary mt-3 returnHomage'> Return to Homepage </button>")
+    $(".returnHomage").click(()=> window.location.assign("start.html"));
+});
+
+function callPopup(){
+    $("#heading-popup").text("Your Score: " + (score + time / 5 ).toString());
+    let txt = `Correct: <strong>${score}</strong>
+     <br> Wrong: <strong>${nOfQuestions-score} </strong> 
+     <br> Time left: <strong>${time}</strong> seconds`;
+ 
+    $(".text-popup").html(txt);
+
+    $("#popup").removeClass("d-none");
+}

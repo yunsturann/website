@@ -77,3 +77,41 @@ footer p{
     text-align: center;
     
 }
+
+/*pop up section*/
+
+#popup{
+    position: fixed;
+    left:50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    
+    border-radius: 6px;
+    min-height: 240px;
+    width: 380px;
+
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap:1rem;
+  
+}
+
+#close-popup{
+    position: absolute;
+    top:4px;
+    right:6px;
+    margin:6px;
+    padding:0 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor:pointer;
+    border:1px solid rgb(0, 0, 0);
+}
+
+#close-popup:hover{
+    background-color:rgb(255, 0, 0);
+    color:white;
+}
+
