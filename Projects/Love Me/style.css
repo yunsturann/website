@@ -1,0 +1,10 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
