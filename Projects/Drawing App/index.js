@@ -5,6 +5,9 @@ let draw_width = "2";
 let is_drawing = false;
 let start_bg_color = "white";
 
+let restore_array = [];
+let index = -1;
+
 const canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth -60;
 canvas.height = 500;
@@ -18,6 +21,7 @@ const colorFields = document.querySelectorAll(".color-field");
 const colorPicker = document.querySelector("#color-picker");
 const penRange = document.getElementById("pen-range");
 const btnClearCanvas = document.getElementById("clear-canvas");
+const btnUndo = document.getElementById("undo");
 
 colorFields.forEach((element)=>{
     element.addEventListener("click",(e)=>{
@@ -30,6 +34,8 @@ colorPicker.addEventListener("input",(e)=> draw_color = e.target.value);
 penRange.addEventListener("input",(e)=> draw_width = e.target.value);
 
 btnClearCanvas.addEventListener("click",clearCanvas);
+
+btnUndo.addEventListener("click",undoLast);
 
 canvas.addEventListener("touchstart",start);
 canvas.addEventListener("touchmove",draw);
@@ -70,10 +76,32 @@ function stop(e){
         is_drawing = false;
     }
     e.preventDefault();
+
+    if(e.type != "mouseout"){
+        restore_array.push(ctx.getImageData(0,0,canvas.width,canvas.height));
+        index += 1;
+    }
+ 
+
 }
 
 function clearCanvas(){
     ctx.fillStyle = start_bg_color;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    restore_array = [];
+    index = -1;
+}
+
+function undoLast(){
+  
+    if(index <= 0){
+        clearCanvas();
+    } else{
+        index -= 1;
+        restore_array.pop();
+        ctx.putImageData(restore_array[index], 0, 0);
+    }
+
 }
