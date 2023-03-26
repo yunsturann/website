@@ -1,6 +1,8 @@
 
 const sevmem = document.getElementById("sevmem");
 const severim = document.getElementById("severim");
+const popup = document.getElementById("popup");
+const btnClose = document.getElementById("close-popup");
 
 const width = window.innerWidth - sevmem.offsetWidth;
 const height = window.innerHeight - sevmem.offsetHeight;
@@ -18,11 +20,20 @@ function changeLocation(e){
 }
 
 severim.addEventListener("click",function(){
-    alert("Teşekkür ederim ben de seni çok seviyorum <3");
+    popup.classList.add("popup-open");
+    popup.querySelector("h2").textContent = "Severim";
+    popup.querySelector("p").textContent = "Teşekkür ederim ben de seni çok seviyorum <3";
+   
 });
 
 sevmem.addEventListener("click",()=>{
-   alert("Buna tiklamak icin cidden bu kadar ugrastiysan tebrik ediyorm beni sevmiyosun üzüldüm."); 
+    popup.classList.add("popup-open");
+    popup.querySelector("h2").textContent = "Sevmem agla";
+    popup.querySelector("p").textContent = "Buna tiklamak icin cidden bu kadar ugrastiysan tebrik ediyorm beni sevmiyosun üzüldüm.";
+});
+
+btnClose.addEventListener("click",()=>{
+    popup.classList.remove("popup-open");
 });
 
 function generateLocation(w,h){
