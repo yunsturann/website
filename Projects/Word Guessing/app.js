@@ -4,12 +4,15 @@ let word;
 let maxGuessing;
 let correctLetter = [];
 let incorrectLetter = [];
+let timer = null, time = 30;
 
 const inputs = document.querySelector(".inputs");
 const btnPlay = document.querySelector(".play-btn");
 const hint = document.querySelector(".hint span");
 const guessLeft = document.querySelector(".guess-left span");
 const wrongLetter = document.querySelector(".wrong-letter span");
+const details = document.querySelector(".details");
+const timeDom = document.getElementById("time");
 
 function randomWord(){
     let randObj = wordList[getRandomIndex(wordList.length)];
@@ -46,6 +49,8 @@ function startGame(){
 
     btnPlay.textContent = "Play Game";
     started = true;
+    timer = setInterval(checkTime,1000);
+    details.style.display = "block";
     randomWord();
     
 }
@@ -70,6 +75,7 @@ function checkInput(e){
         if(correctLetter.length === word.length){
             alert("You won this game!");
             btnPlay.textContent = "Reset Game!";
+            clearInterval(timer);
             return;
         }
     }else{
@@ -80,6 +86,7 @@ function checkInput(e){
     guessLeft.textContent = (--maxGuessing).toString();
     if(maxGuessing === 0){
         alert("You lost! KEY: " + word);
+        clearInterval(timer);
         btnPlay.textContent = "Reset Game!";
     }
 
@@ -91,6 +98,17 @@ function resetGame(){
     incorrectLetter = [];
     correctLetter = [];
     wrongLetter.textContent = "";
+    time = 30;
+}
+
+function checkTime(){
+    timeDom.textContent = --time;
+    if(time == 0){
+        clearInterval(timer);
+        started = false;
+        alert("Time is up!");
+        btnPlay.textContent = "Reset Game!";
+    }
 }
 
 
