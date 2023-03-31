@@ -4,7 +4,7 @@ let word;
 let maxGuessing;
 let correctLetter = [];
 let incorrectLetter = [];
-let timer = null, time = 30;
+let timer = null, time = 6;
 
 const inputs = document.querySelector(".inputs");
 const btnPlay = document.querySelector(".play-btn");
@@ -13,7 +13,10 @@ const guessLeft = document.querySelector(".guess-left span");
 const wrongLetter = document.querySelector(".wrong-letter span");
 const details = document.querySelector(".details");
 const timeDom = document.getElementById("time");
-
+const popup = document.querySelector(".popup");
+const btnPopupClose = document.getElementById("close-popup");
+const btnPopupNextGame = document.getElementById("next-game");
+ 
 function randomWord(){
     let randObj = wordList[getRandomIndex(wordList.length)];
     word = randObj.word;
@@ -73,7 +76,7 @@ function checkInput(e){
         inputs.querySelectorAll("input")[index].value = key;
         correctLetter.push(key);
         if(correctLetter.length === word.length){
-            alert("You won this game!");
+            popupToggle("You Win!");
             btnPlay.textContent = "Reset Game!";
             clearInterval(timer);
             return;
@@ -85,7 +88,7 @@ function checkInput(e){
 
     guessLeft.textContent = (--maxGuessing).toString();
     if(maxGuessing === 0){
-        alert("You lost! KEY: " + word);
+        popupToggle("You lost!");
         clearInterval(timer);
         btnPlay.textContent = "Reset Game!";
     }
@@ -106,8 +109,8 @@ function checkTime(){
     if(time == 0){
         clearInterval(timer);
         started = false;
-        alert("Time is up!");
         btnPlay.textContent = "Reset Game!";
+        popupToggle("Time is up!");
     }
 }
 
@@ -117,6 +120,26 @@ function getRandomIndex(upper){
     return Math.floor(Math.random()*upper);
 }
 
+function popupToggle(title){
+
+    if(popup.classList.contains("popup-open")){
+        popup.classList.remove("popup-open");
+    }else{
+        started = false;
+        popup.classList.add("popup-open");
+        popup.querySelector("h2").textContent = title;
+        popup.querySelector("p").innerHTML = "Word: " + word  +"<br>" +
+        "Time: " + time + "<br>" +
+        "Incorrect letters: " + incorrectLetter.map((element)=>" "+ element) + "<br>"
+        "Remaning Guess: " + maxGuessing;
+    }
+    
+}
+
+
   
 btnPlay.addEventListener("click",startGame);
 document.addEventListener("keydown",checkInput);
+
+btnPopupClose.addEventListener("click",popupToggle);
+btnPopupNextGame.addEventListener("click",()=>{popup.classList.remove("popup-open");startGame()});
