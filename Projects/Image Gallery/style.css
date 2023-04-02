@@ -102,12 +102,12 @@ input, button, i{
 .images .card:hover .details{
     bottom:0;
 }
-.card .details .photographer{
+.photographer{
     color:#fff;
     display: flex;
     align-items: center;
 }
-.details .photographer i{
+.photographer i{
     font-size:1.4rem;
     margin-right:10px;
 }
@@ -131,4 +131,74 @@ input, button, i{
     font-size:1.2rem;
     padding:12px 27px;
     background-color: #8a6cff;
+}
+.gallery .load-more.disabled{
+    opacity:0.7;
+    pointer-events: none;
+}
+
+/*/////////////////*/
+/*LightBox Section*/
+
+.lightbox{
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    display:none;
+}
+.lightbox .wrapper{
+    position: absolute;
+    top:50%;
+    left:50%;
+    width:100%;
+    padding:20px;
+    max-width:850px;
+    background-color: #fff;
+    border-radius: 5px;
+    transform: translate(-50%,-50%);
+}
+.wrapper header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .photographer{
+    color:#333;
+}
+header .photographer i{
+    font-size:1.7rem;
+}
+header .photographer span{
+    font-size:1.2rem;
+}
+header .buttons i{
+    width:40px;
+    height: 40px;
+    color:#fff;
+    cursor:pointer;
+    text-align: center;
+    line-height: 40px;
+    background: #8a6cff;
+    font-size:1.2rem;
+    display:inline-block;
+}
+.buttons i:last-child{
+    margin-left:10px;
+    background-color: #6c757d;
+}
+.preview-img{
+    display: flex;
+    justify-content: center;
+    margin-top:25px;
+}
+.wrapper .preview-img .img{
+    max-height: 65vh;
+    max-width: 90vh;
+}
+.preview-img .img img{
+    width:100%;
+    height:100%;
+    object-fit: contain;
 }
