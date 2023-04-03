@@ -58,9 +58,17 @@ function startGame(){
 }
 
 function checkInput(e){
+
+    e.preventDefault();
+    
     let key = e.key.toLowerCase();
 
     if(!started){
+        return;
+    }
+
+    if(!/^[A-Za-z]+$/.test(key) || key.length != 1) {
+        console.log("Bune ", key);
         return;
     }
 
