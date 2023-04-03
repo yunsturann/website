@@ -4,7 +4,7 @@ let word;
 let maxGuessing;
 let correctLetter = [];
 let incorrectLetter = [];
-let timer = null, time = 6;
+let timer = null, time = 60;
 
 const inputs = document.querySelector(".inputs");
 const btnPlay = document.querySelector(".play-btn");
@@ -20,7 +20,6 @@ const btnPopupNextGame = document.getElementById("next-game");
 function randomWord(){
     let randObj = wordList[getRandomIndex(wordList.length)];
     word = randObj.word;
-    console.log(randObj);
 
     maxGuessing = word.length > 5 ? 8 : 6; 
 
@@ -101,7 +100,7 @@ function resetGame(){
     incorrectLetter = [];
     correctLetter = [];
     wrongLetter.textContent = "";
-    time = 30;
+    time = 60;
 }
 
 function checkTime(){

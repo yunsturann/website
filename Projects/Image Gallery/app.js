@@ -1,24 +1,61 @@
 const imagesWrapper = document.querySelector(".images");
 const loadMoreBtn = document.querySelector(".load-more");
 const searchInput = document.querySelector(".search-box input");
+const lightBox = document.querySelector(".lightbox");
+const closeLightBox = lightBox.querySelector(".uil-times");
+const lightBoxWrapper = lightBox.querySelector(".wrapper");
+const downloadImgBtn = lightBox.querySelector(".uil-import");
 
 const apiKey = "HwLoMXVjQDavzy32dgcBvFnr3nmedvasP9RdoIQpXWbVHUvwSPR0iTPR";
 const perPage = 15;
 let currentPage = 1;
 let searchTerm = null;
 
+const downloadImg = async (imgURL)=>{
+    
+    // Converting received img to blob, creating its download link && downloading it.
+    try {
+        const file = await (await fetch(imgURL)).blob();
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(file);
+        a.download = new Date().getTime();
+        a.click();
+    } catch (error) {
+        alert("Failed to download image!");
+        console.log(error);
+    }
+
+}
+
+const showLightBox = (name,source) => {
+    // add content to light box and show it
+    lightBox.querySelector("img").src = source;
+    lightBox.querySelector("span").textContent = name;
+    // store data to use it later
+    downloadImgBtn.setAttribute("data-img",source);
+    lightBox.classList.add("show");
+    // dont let to scrool while user is on lightbox
+    document.body.style.overflow = "hidden";
+}
+
+const hideLightBox = () =>{
+    lightBox.classList.remove("show");
+    document.body.style.overflow = "auto";
+}
+
 const generateHTML = (images) =>{
-    console.log(images);
     //adding all images to the existing image wrapper
     imagesWrapper.innerHTML += images.map(img =>
-        `<li class="card">
+        `<li class="card" onclick = "showLightBox('${img.photographer}', '${img.src.large2x}')">
             <img src="${img.src.large2x}" alt="img">
             <div class="details">
                 <div class="photographer">
                     <i class="uil uil-camera"></i>
                     <span>${img.photographer}</span>
                 </div>
-                <button><i class="uil uil-import"></i></button>
+                <button onclick="downloadImg('${img.src.large2x}');event.stopPropagation();">
+                    <i class="uil uil-import"></i>
+                </button>
             </div>
         </li>
         `
@@ -44,15 +81,7 @@ const getImages = async (apiURL) =>{
     } catch (error) {
         alert("Failed to load images!");
     }
-   
 
- 
-    /*
-    fetch(apiURL,{
-        headers:{Authorization:apiKey}
-    }).then(res => res.json()).then(data =>{
-        generateHTML(data.photos);
-    })*/
 }
 
 const loadMoreImages = (e) =>{
@@ -78,3 +107,7 @@ getImages(`https://api.pexels.com/v1/curated?page=${currentPage}&per_page=${perP
 
 loadMoreBtn.addEventListener("click",loadMoreImages);
 searchInput.addEventListener("keyup",loadSearchImages);
+closeLightBox.addEventListener("click",hideLightBox);
+lightBox.addEventListener("click",hideLightBox);
+lightBoxWrapper.addEventListener("click",(e)=>e.stopPropagation());
+downloadImgBtn.addEventListener("click",(e)=> downloadImg(e.target.dataset.source));
