@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/end.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1 id="heading" class="p-1">Quiz App</h1>
+
+        <div class="sub-header">
+            <button id="prev" class="btn btn-primary">Previous</button>
+            <p id="category"></p>
+            <button id="next" class="btn btn-primary">Next</button>
+        </div>
+
+        <hr>
+
+        <p id="question">Question</p>
+
+        <hr>
+
+        <div id="options">
+            <!--Options here-->
+        </div>
+     
+        <!-- Pagination -->
+        <ul class="pagination">
+            <li id="pag-prev">&laquo;</li>
+            <!--Pagination items here-->
+            <li id="pag-next">&raquo;</li>
+        </ul>
+
+        <hr>
+
+        <footer>
+            <p>~Yunus Turan</p>
+        </footer>
+
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="end.js"></script>
+</body>
+</html>

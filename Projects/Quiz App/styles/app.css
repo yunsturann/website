@@ -109,9 +109,17 @@ footer p{
     cursor:pointer;
     border:1px solid rgb(0, 0, 0);
 }
-
 #close-popup:hover{
     background-color:rgb(255, 0, 0);
     color:white;
 }
 
+#footer-popup{
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+    align-items: center;
+}
+#footer-popup button{
+    width: 200px;
+}

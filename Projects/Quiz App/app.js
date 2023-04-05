@@ -8,55 +8,7 @@ let timer;
 let started = false;
 let score = 0;
 let correctIndex;
-
-
-/*Click event to the options */
-
-$(".option").click((e)=>{
-   
-    // dont execute click event if quiz is not started.
-    if(!started){
-        return;
-    }
-    // check clicked choice is true, increment score. Otherwise, make clicked html danger to show wrong user choice  
-    if(data[index].correctAnswer === e.currentTarget.firstElementChild.textContent){
-        score++;
-        $("#score").text(score+" score");
-    }else{
-        e.currentTarget.classList.add("bg-danger");
-    }
-    // show correct answer by adding backgronund class in every click
-    $(`#btn${correctIndex}`).addClass("bg-success");
-
-    // make started false until the next question
-    started = false;
-    // increment index to call next question
-    index++;
-    // if all questions are done, offer two option one of is to restart the same category quiz.
-    // another one is adding button below the footer in order to return homepage of the quiz app. 
-    if(index === nOfQuestions){
-
-        setTimeout(callPopup,1000);
-
-        // show score 5 sec
-        myAlert("Your Score is " + score +".",5000);
-        return;
-    }
-    // send parameter for alert to inform user
-    myAlert("Next question is coming...",2000);
-    // to delete bgrounds of choices
-    setTimeout(()=>clearOptionColors(e),2000);
-    // call the next question function 
-    setTimeout(nextQuestion,2000);
-
-});
-
-// removes backgrounds on choices.
-function clearOptionColors(e){
-    e.currentTarget.classList.remove("bg-danger");
-    $(`#btn${correctIndex}`).removeClass("bg-success");
-}
-
+let QuesAllDOM = [];
 
 // document ready
 $(function(){
@@ -127,6 +79,64 @@ function startQuiz(){
 
 }
 
+/*Click event to the options */
+
+$(".option").click((e)=>{
+   
+    // dont execute click event if quiz is not started.
+    if(!started){
+        return;
+    }
+    // check clicked choice is true, increment score. Otherwise, make clicked html danger to show wrong user choice  
+    if(data[index].correctAnswer === e.currentTarget.firstElementChild.textContent){
+        score++;
+        $("#score").text(score+" score");
+    }else{
+        e.currentTarget.classList.add("bg-danger");
+    }
+    // show correct answer by adding backgronund class in every click
+    $(`#btn${correctIndex}`).addClass("bg-success");
+
+    // send item to array for ending page
+    let quesDOM = {
+        category: document.querySelector("#category").textContent,
+        question: document.getElementById("question").textContent,
+        options: document.querySelector("#options").innerHTML,
+    }
+    QuesAllDOM.push(quesDOM);
+   
+
+    // make started false until the next question
+    started = false;
+    // increment index to call next question
+    index++;
+    // if all questions are done, offer two option one of is to restart the same category quiz.
+    // another one is adding button below the footer in order to return homepage of the quiz app. 
+    if(index === nOfQuestions){
+
+        setTimeout(callPopup,1000);
+
+        // show score 5 sec
+        myAlert("Your Score is " + score +".",5000);
+        return;
+    }
+    // send parameter for alert to inform user
+    myAlert("Next question is coming...",2000);
+
+    // to delete bgrounds of choices
+
+    setTimeout(()=>clearOptionColors(e),2000);
+    // call the next question function 
+    setTimeout(nextQuestion,2000);
+
+});
+
+// removes backgrounds on choices.
+function clearOptionColors(e){
+    e.currentTarget.classList.remove("bg-danger");
+    $(`#btn${correctIndex}`).removeClass("bg-success");
+}
+
 function nextQuestion(){
     // make options clickable by setting started bool
     started = true;
@@ -182,8 +192,6 @@ function setTime(){
     
 }
 
-
-
 /* My alert function creates a pop-up */
 function myAlert(text,duration){
     const message = $("#message");
@@ -209,6 +217,13 @@ $("#restart-quiz").click(()=>{
 $("#homepage-quiz").click(()=>{
     window.location.assign("start.html");
 });
+
+$("#ending-page").click(()=>{
+    // update storage for ending page
+    sessionStorage.setItem("QuesAllDOM",JSON.stringify(QuesAllDOM));
+    window.location.assign("end.html");
+});
+
 
 $("#close-popup").click(()=>{
     $("#popup").addClass("d-none");
