@@ -27,12 +27,12 @@ const downloadImg = async (imgURL)=>{
 
 }
 
-const showLightBox = (name,source) => {
+const showLightBox = (name,img) => {
     // add content to light box and show it
-    lightBox.querySelector("img").src = source;
+    lightBox.querySelector("img").src = img;
     lightBox.querySelector("span").textContent = name;
     // store data to use it later
-    downloadImgBtn.setAttribute("data-img",source);
+    downloadImgBtn.setAttribute("data-img",img);
     lightBox.classList.add("show");
     // dont let to scrool while user is on lightbox
     document.body.style.overflow = "hidden";
@@ -92,9 +92,12 @@ const loadMoreImages = (e) =>{
 }
 
 const loadSearchImages = (e) =>{
-    if(e.target.value === "") return searchTerm = null;
 
     if(e.key === "Enter"){
+        if(e.target.value === "") {
+            location.reload();
+            return;
+        }
         currentPage = 1;
         searchTerm = e.target.value;
         imagesWrapper.innerHTML = "";
@@ -110,4 +113,4 @@ searchInput.addEventListener("keyup",loadSearchImages);
 closeLightBox.addEventListener("click",hideLightBox);
 lightBox.addEventListener("click",hideLightBox);
 lightBoxWrapper.addEventListener("click",(e)=>e.stopPropagation());
-downloadImgBtn.addEventListener("click",(e)=> downloadImg(e.target.dataset.source));
+downloadImgBtn.addEventListener("click",(e)=> downloadImg(e.target.dataset.img));

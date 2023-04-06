@@ -167,6 +167,9 @@ input, button, i{
     justify-content: space-between;
     align-items: center;
 }
+.lightbox i:hover{
+    opacity: 0.7;    
+}
 header .photographer{
     color:#333;
 }
