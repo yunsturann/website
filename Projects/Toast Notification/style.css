@@ -1,0 +1,145 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+    --dark: #34495E;
+    --light: #ffffff;
+    --success: #0ABF30;
+    --error: #E24D4C;
+    --warning: #E9BD0C;
+    --info: #3498DB;
+}
+
+body{
+    background-color: var(--dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notifications{
+    position:fixed;
+    top:30px;
+    right:20px;
+}
+
+.notifications :where(.toast, .column){
+    display: flex;
+    align-items: center;
+}
+.notifications .toast{
+    background-color: var(--light);
+    border-radius:4px;
+    width:400px;
+    list-style: none;
+    padding:16px 17px;
+    margin-bottom:10px;
+    justify-content: space-between;
+    position:relative;
+    overflow: hidden;
+    animation:show_toast 0.3s ease forwards;
+}
+@keyframes show_toast{
+    0%{
+        transform: translateX(100%);
+    }
+    40%{
+        transform:translateX(-5%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform:translateX(-10px);
+    }
+}
+.notifications .toast.hide{
+    animation:hide_toast 0.3s ease forwards;
+}
+@keyframes hide_toast {
+    0%{
+        transform: translateX(-10px);
+    }
+    40%{
+        transform:translateX(0%);
+    }
+    80%{
+        transform: translateX(-5%);
+    }
+    100%{
+        transform:translateX(calc(100% +20px));
+    }
+}
+.toast::before{
+    position: absolute;
+    content: "";
+    height:3px;
+    width:100%;
+    bottom:0px;
+    left:0px;
+    animation:progress 5s linear forwards;
+}
+@keyframes progress {
+    100%{
+        width: 0%;
+    }
+}
+.toast.success::before, .btn#success{
+    background-color: var(--success);
+}
+.toast.error::before, .btn#error{
+    background-color: var(--error);
+}
+.toast.warning::before, .btn#warning{
+    background-color: var(--warning);
+}
+.toast.info::before, .btn#info{
+    background-color: var(--info);
+}
+.toast .column i{
+    font-size:1.75rem;
+}
+.toast.success .column i{
+    color: var(--success);
+}
+.toast.error .column i{
+    color: var(--error);
+}
+.toast.warning .column i{
+    color: var(--warning);
+}
+.toast.info .column i{
+    color: var(--info);
+}
+.toast .column span{
+    font-size:1.07rem;
+    margin-left:12px;
+}
+.toast i:last-child{
+    color:#aeb0d7;
+    cursor:pointer;
+}
+.toast i:last-child:hover{
+    color: var(--dark);
+}
+
+.buttons .btn{
+    border:none;
+    cursor:pointer;
+    outline:none;
+    color:#fff;
+    padding:10px 20px;
+    margin:0 5px;
+    font-size:1.2rem;
+    border-radius: 4px;
+}
+.buttons .btn:hover{
+    opacity: 0.85;
+
+}
