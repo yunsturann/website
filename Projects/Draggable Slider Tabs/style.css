@@ -16,7 +16,7 @@ body{
 }
 
 .wrapper{
-    padding: 35px;
+   
     position: relative;
     overflow-x: hidden;
     max-width: 1000px;
@@ -35,6 +35,7 @@ body{
 
 .icon:first-child{
     left:0;
+    display: none;
     background: linear-gradient(90deg,#fff 70%,transparent);
 }
 .icon:last-child{
@@ -66,9 +67,17 @@ body{
 }
 
 .wrapper .tabs-box{
+    padding: 35px;
     display:flex;
     gap:12px;
     list-style-type: none;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.tabs-box.dragging{
+    scroll-behavior: auto;
+    cursor: grab;
 }
 
 .tabs-box .tab{
@@ -79,5 +88,15 @@ body{
     padding:13px 20px;
     border-radius:26px;
     border:1px solid #d8d5f2;
+}
+
+.tabs-box.dragging .tab{
+    user-select: none;
+    pointer-events: none;
+}
+.tabs-box .tab.active{
+    background-color: #5372F0;
+    border-color: transparent;
+    color:#fff;
 }
 
