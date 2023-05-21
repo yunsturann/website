@@ -1,0 +1,53 @@
+{
+    "products": [
+      {
+        "name": "phone-1",
+        "type": "Phone",
+        "src": "images/phone-1.jpg",
+        "text": "Lorem, ipsum dolor.",
+        "data_name":"phones"
+      },
+      {
+        "name": "phone-2",
+        "type": "Phone",
+        "src": "images/phone-2.jpg",
+        "text": "Lorem, ipsum dolor.",
+        "data_name":"phones"
+      },
+      {
+        "name": "cloth-1",
+        "type": "Cloth",
+        "src": "images/cloth-1.jpg",
+        "text": "Lorem, ipsum dolor.",
+        "data_name":"clothes"
+      },
+      {
+        "name": "cloth-2",
+        "type": "Cloth",
+        "src": "images/cloth-2.jpg",
+        "text": "Lorem, ipsum dolor.",
+        "data_name":"clothes"
+      },
+      {
+        "name": "cloth-3",
+        "type": "Cloth",
+        "src": "images/cloth-3.jpg",
+        "text": "Lorem, ipsum dolor.",
+        "data_name":"clothes"
+      },
+      {
+        "name": "shoe-1",
+        "type": "Shoe",
+        "src": "images/shoe-1.jpg",
+        "text": "Lorem, ipsum dolor.",
+        "data_name":"shoes"
+      },
+      {
+        "name": "shoe-2",
+        "type": "Shoe",
+        "src": "images/shoe-2.jpg",
+        "text": "Lorem, ipsum dolor.",
+        "data_name":"shoes"
+      } 
+    ]
+  }
