@@ -60,6 +60,9 @@ button.active{
     border-radius:8px;
     box-shadow:0 0 10px rgba(0,0,0,0.05);
 }
+.card.hide{
+    display:none;
+}
 
 .card img{
     width:100%;

@@ -1,4 +1,5 @@
 
+// add products from json file. 
 let products = [];
 
 const cardsContainer = document.querySelector(".filterable_cards");
@@ -27,4 +28,34 @@ function AddProduct(product){
                        </div>`;
                        
     cardsContainer.appendChild(card);
+
 }
+
+// filter cards
+
+const filterBtns = document.querySelectorAll(".filter-btns button");
+
+filterBtns.forEach(button => button.addEventListener("click", FilterCards));
+
+function FilterCards(e){
+  document.querySelector(".active").classList.remove("active");
+  e.target.classList.add("active");
+
+  if(e.target.dataset.name === "all"){
+    const filterableCards = document.querySelectorAll(".filterable_cards .card.hide");
+    filterableCards.forEach(card => card.classList.remove("hide"));
+    return;
+  }
+
+  const filterableCards = document.querySelectorAll(".filterable_cards .card");
+
+  filterableCards.forEach(card =>{
+    if(e.target.dataset.name != card.dataset.name){
+      card.classList.add("hide");
+    }else{
+      card.classList.remove("hide");
+    }
+  });
+
+}
+
