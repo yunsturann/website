@@ -17,7 +17,7 @@
     --outgoing-chat-border:#343541;
     --incoming-chat-border:#444654;
 }
-.ligth-mode{
+.light-mode{
     --text-color:#343541;
     --icon-color:#a9a9bc;
     --icon-hover-bg:#f1f1f3;
@@ -37,6 +37,28 @@ body{
     padding-bottom:150px;
     overflow-y:auto;
 }
+
+.default-text{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    text-align: center;
+    color:var(--text-color);
+    padding: 0 10px;
+    
+}
+
+.default-text h1{
+    font-size:3.3rem;
+}
+
+.default-text p{
+    font-size:1.1rem;
+    margin-top:10px;
+}
+
 :where(.chat-container, textarea)::-webkit-scrollbar{
     width:6px;
 }
@@ -78,7 +100,7 @@ body{
     color:var(--icon-color);
     visibility: hidden;
 }
-.chat:hover .chat-content:not(:has(.typing-animation)) span{
+.chat:hover .chat-content:not(:has(.typing-animation, .error)) span{
     visibility: visible;
 }
 
@@ -99,6 +121,10 @@ body{
     white-space:pre-wrap;
     font-size:1.05rem;
     padding:0 50px 0 25px;
+}
+
+.chat .chat-details p.error{
+    color:#e55865;
 }
 
 .copy-icon{
@@ -165,6 +191,8 @@ body{
     height:55px;
     border:none;
     resize:none;
+    max-height: 140px;
+    overflow-y: auto;
     font-size:1rem;
     border-radius:4px;
     color:var(--text-color);
