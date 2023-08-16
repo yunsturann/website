@@ -17,18 +17,18 @@
         <div class="content">
           <header>
             <p>Add a new Note</p>
-            <i class="uil uil-times"></i>
+            <i id="close-icon" class="uil uil-times"></i>
           </header>
           <form action="#">
             <div class="row title">
               <label>Title</label>
-              <input type="text" />
+              <input id="title-input" type="text" />
             </div>
             <div class="row description">
               <label>Description</label>
-              <textarea></textarea>
+              <textarea id="desc-input"></textarea>
             </div>
-            <button>Add Note</button>
+            <button id="btn-add">Add Note</button>
           </form>
         </div>
       </div>
@@ -119,5 +119,7 @@
         </div>
       </li>
     </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
