@@ -56,6 +56,11 @@ body {
   justify-content: space-between;
 }
 
+.note .details {
+  max-height: 165px;
+  overflow-y: auto;
+}
+
 .note p {
   font-size: 22px;
   font-weight: 500;
@@ -101,7 +106,7 @@ body {
   transition: transform 0.2s ease;
 }
 
-.settings:hover .menu {
+.settings.show .menu {
   transform: scale(1);
 }
 
@@ -132,7 +137,7 @@ body {
   height: 100%;
   width: 100%;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .popup-box .popup {
