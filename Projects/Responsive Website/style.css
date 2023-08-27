@@ -8,6 +8,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #f2f2f2;
 }
@@ -175,4 +179,135 @@ section .card p {
 
 .about ul {
   padding-left: 20px;
+}
+
+/*Contact */
+
+.contact .row {
+  margin: 60px 0 90px;
+  justify-content: space-between;
+}
+
+.contact .row .col {
+  padding: 0 10px;
+  width: calc(100% / 2 -50px);
+}
+
+.contact .row .col p {
+  color: #7a7a7a;
+  margin-bottom: 10px;
+}
+
+.contact .row .col p i {
+  margin-right: 10px;
+}
+
+.contact form input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0 15px;
+  height: 45px;
+  border: 1px solid #bfbfbf;
+  outline: none;
+}
+
+.contact form textarea {
+  border: 1px solid #bfbfbf;
+  padding: 15px;
+  width: 100%;
+  height: 150px;
+  outline: none;
+  resize: none;
+}
+
+.contact form button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 17px;
+  color: #fff;
+  margin-top: 10px;
+  border: none;
+  background-color: #333;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.contact form button:hover {
+  background-color: #525252;
+}
+
+/*Footer*/
+
+.footer {
+  background-color: #333;
+  padding: 20px 0;
+  color: #fff;
+}
+
+#menu-toggler,
+#hamburger-btn {
+  display: none;
+}
+
+/* Responsive */
+
+@media (width <860px) {
+  .navbar .nav-links {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    background-color: #333;
+    height: 100%;
+    width: 300px;
+    display: block;
+    padding-left: 20px;
+    padding-top: 30px;
+    transition: all 0.4s ease;
+    left: -100%;
+  }
+
+  #menu-toggler:checked ~ .nav-links {
+    left: 0;
+  }
+
+  .nav-links li {
+    font-size: 18px;
+  }
+
+  #hamburger-btn {
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    display: block;
+  }
+
+  section .cards .card {
+    width: calc(100% / 2 - 15px);
+  }
+
+  .contact .row {
+    flex-direction: column;
+  }
+  .contact .row .col {
+    width: 100%;
+  }
+  .contact .row .col:last-child {
+    margin-top: 40px;
+  }
+}
+
+@media (width < 560px) {
+  .navbar .nav-links {
+    width: 200px;
+  }
+  section .cards .card {
+    width: 100%;
+  }
+  .homepage .text h1 {
+    font-size: 30px;
+  }
+  section h2 {
+    font-size: 1.5rem;
+  }
 }

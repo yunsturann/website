@@ -18,12 +18,17 @@
       <nav class="navbar container flex">
         <h2 class="logo"><a href="#">LOGO</a></h2>
 
+        <input type="checkbox" id="menu-toggler" />
+        <label for="menu-toggler" id="hamburger-btn">
+          <i class="fa-solid fa-bars"></i>
+        </label>
+
         <ul class="nav-links flex">
           <li><a href="#home">home</a></li>
           <li><a href="#services">services</a></li>
           <li><a href="#portfolio">portfolio</a></li>
-          <li><a href="#about us">about us</a></li>
-          <li><a href="#contact us">contact us</a></li>
+          <li><a href="#about">about us</a></li>
+          <li><a href="#contact">contact us</a></li>
         </ul>
       </nav>
     </header>
@@ -234,11 +239,34 @@
                 <i class="fas fa-map-marker-alt"></i>12p Xampsite Avenue,
                 Wilderness, CA 98765
               </p>
+              <p><i class="fas fa-envelope"></i>info@campinggearexperts.com</p>
+              <p><i class="fas fa-phone"></i>(123) 456-7890</p>
+              <p><i class="fas fa-clock"></i>Monday - Friday</p>
+              <p><i class="fas fa-clock"></i>Saturday 10:00 AM -3:00 PM</p>
+              <p><i class="fas fa-clock"></i>Sunday: Closed</p>
+              <p><i class="fas fa-globe"></i>www.campinggears.com</p>
             </div>
+          </div>
+
+          <div class="col form">
+            <form action="#">
+              <input type="text" placeholder="Name" required />
+              <input type="email" placeholder="Email" required />
+              <textarea placeholder="Message" required></textarea>
+              <button type="submit" id="submit">Send Message</button>
+            </form>
           </div>
         </div>
       </div>
     </section>
     <!--Contact End-->
+
+    <!--Footer Start-->
+    <div class="footer">
+      <div class="container">
+        <span>Copyright 2023</span>
+      </div>
+    </div>
+    <!--Footer End-->
   </body>
 </html>
